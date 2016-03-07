@@ -1,5 +1,7 @@
 TODO list
 
+1. activate UMLet with plugin http://www.umlet.com/changes.htm
+
 Gameplay:
 
 
