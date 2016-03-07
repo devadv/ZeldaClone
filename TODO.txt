@@ -1,7 +1,10 @@
 TODO list
 
+<<<<<<< HEAD
 1. activate UMLet with plugin http://www.umlet.com/changes.htm
 
+=======
+>>>>>>> branch 'master' of https://github.com/devadv/ZeldaClone.git
 Gameplay:
 
 
