@@ -1,0 +1,14 @@
+TODO list
+
+Gameplay:
+
+
+
+
+
+Tests:
+
+1. Simple Map creation with Tiled
+2. Test map with different layers
+3. How does collision works with these layers? is it possible with Slick2d?
+4. How to move the Hero? ( Hero Animation / Map moves)
