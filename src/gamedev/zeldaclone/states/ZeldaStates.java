@@ -12,8 +12,9 @@ public class ZeldaStates extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
+		addState(new ZeldaMenu(0));
 		addState(new ZeldaGame(1));
-		enterState(1);
+		enterState(0);
 
 	}
 
