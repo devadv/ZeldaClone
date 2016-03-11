@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32">
+  <image source="sheet1.png" width="256" height="256"/>
+ </tileset>
+ <layer name="Wall" width="15" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA5NkYGCQpACTAwarXkJyo3oHXi8+MNB6ycUA5/ILuIQDAAA=
+  </data>
+ </layer>
+ <layer name="Grass" width="15" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgoAxwk4EHq15CcqN6B17vYE5X5AIA1/DxkIQDAAA=
+  </data>
+ </layer>
+</map>
