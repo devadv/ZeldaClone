@@ -1,10 +1,6 @@
 TODO list
 
-<<<<<<< HEAD
-1. activate UMLet with plugin http://www.umlet.com/changes.htm
 
-=======
->>>>>>> branch 'master' of https://github.com/devadv/ZeldaClone.git
 Gameplay:
 
 
@@ -17,3 +13,5 @@ Tests:
 2. Test map with different layers
 3. How does collision works with these layers? is it possible with Slick2d?
 4. How to move the Hero? ( Hero Animation / Map moves)
+5. Choose between different colors Link: Green, Red and Blue from Ocarina of Time. You can buy the clothes later in the game.
+Green is the color you start your adventure with, blue lets you swim, and Red allows a better protection against fire.

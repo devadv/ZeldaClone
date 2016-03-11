@@ -12,7 +12,8 @@ public class ZeldaStates extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		// TODO Auto-generated method stub
+		addState(new ZeldaGame(1));
+		enterState(1);
 
 	}
 
@@ -20,7 +21,7 @@ public class ZeldaStates extends StateBasedGame {
 		try {
 			AppGameContainer agc = new AppGameContainer(new ZeldaStates(
 					"Zelda Clone Game"));
-			agc.setDisplayMode(800, 600, false);
+			agc.setDisplayMode(800, 640, false);
 			agc.setTargetFrameRate(60);
 			agc.start();
 		} catch (SlickException e) {

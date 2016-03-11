@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32">
+  <image source="sheet1.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="sheet2" tilewidth="32" tileheight="32">
+  <image source="sheet2.png" width="900" height="555"/>
+ </tileset>
+ <tileset firstgid="541" name="sheet3" tilewidth="32" tileheight="32">
+  <image source="sheet3.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="797" name="sheet4" tilewidth="32" tileheight="32">
+  <image source="sheet4.png" width="960" height="960"/>
+ </tileset>
+ <layer name="Tilelaag 1" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+NmYGDgRsOSWMTwiYOwMh5MillD0Q5087CJUWIHOXg42CE5QuzgIYAFiVAzagf17Bgu6Wqg7CC1TCTXDlLFR4IdAGaxSdzQBwAA
+  </data>
+ </layer>
+ <layer name="Tilelaag 2" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA7NlYmCwRcP4ALpaEJbEr4XBlwkTk6qekB2xTJiYVPWE7MhlwsSkqidkBzXAqB2jdozaMWrHYLZjNSvt7ThJBzuQwWCwAwB2nsyI0AcAAA==
+  </data>
+ </layer>
+</map>
