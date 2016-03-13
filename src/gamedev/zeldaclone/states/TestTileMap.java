@@ -2,6 +2,7 @@ package gamedev.zeldaclone.states;
 
 
 import java.awt.Font;
+import java.util.ArrayList;
 
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -21,6 +22,7 @@ public class TestTileMap {
 	private boolean debug;
 	private int layerIndex;
 	private int TILESIZE = 32;
+	private ArrayList<String> data;
 
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		tileMap = new TiledMap("res/testtilemap2.tmx");
@@ -28,27 +30,42 @@ public class TestTileMap {
 		ttf = new TrueTypeFont(awtFont, false);
 		String layer = "Wall";
 		layerIndex = tileMap.getLayerIndex(layer);
+		data = new ArrayList<String>();
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.setColor(Color.red);
-		g.drawString("getLayerIndex Wall / Grass : " + tileMap.getLayerIndex("Wall") +" " + tileMap.getLayerIndex("Grass"), 492, 50);
-		g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492, 70);
+		//g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492, 70);
 		tileMap.render(0, 0);
 		g.setBackground(Color.orange);
 		if(debug) {
 			drawDebugLines(g, TILESIZE);
 			drawTiledIDs(g);
 		}
+		//loop through data
+		int y = 0;
+		int x = 492;
+		g.setColor(Color.red);
+		for (String s : data){
+			g.drawString(s, x, y+=20);
+		}
 
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		generateData();
 		Input input = gc.getInput();
 		if(input.isKeyPressed(Input.KEY_D)) {
 			debug = !debug;
 		}
 	}
+	public void generateData(){
+		data = new ArrayList<String>();
+		data.add("Choose D for debug mode");
+		data.add("-------------------------");
+		data.add("getLayerIndex Wall / Grass : " + tileMap.getLayerIndex("Wall") +" " + tileMap.getLayerIndex("Grass"));
+		
+	}
+	
 	public void drawDebugLines(Graphics g, int size) {
 		int resolutions = 480;
 		for(int i = 0; i < resolutions; i += size) {
