@@ -34,7 +34,7 @@ public class TestTileMap {
 		tilemap.render(0, 0);
 		g.setBackground(Color.orange);
 		if(debug) {
-			drawDebugLines(g, TS);;
+			drawDebugLines(g, TS);
 		}
 
 	}

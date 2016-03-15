@@ -19,6 +19,7 @@ public class ZeldaPlayer {
 	private float width = 25;
 	private float HEIGHT = 25;
 	protected float speed = 0.20f;
+	private boolean isEnding = true;
 	
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
@@ -36,6 +37,8 @@ public class ZeldaPlayer {
 	}
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
+		
+		
 		if(gc.getInput().isKeyDown(Input.KEY_LEFT)) {
 			moveLeft(delta);
 		}
@@ -49,7 +52,23 @@ public class ZeldaPlayer {
 		if(gc.getInput().isKeyDown(Input.KEY_DOWN)) {
 			moveDown(delta);
 		}
-	}
+		if (x + speed < 50) {
+			moveRight(delta);
+		}
+		if (x + speed > gc.getWidth() - width - 254) {
+			moveLeft(delta);
+		}
+		
+		//The code below is as a test, as leaving the current map, it will go to another.
+		//In this case it will move to another testmap in State 0.
+		if (y + speed > gc.getHeight() - HEIGHT + 10) {
+			sbg.enterState(0);
+			}
+		if (y + speed < gc.getHeight() - HEIGHT - 625) {
+			sbg.enterState(0);
+			}
+		}
+	
 		public void moveDown(int delta) {
 			y += speed * delta;
 		
@@ -66,6 +85,8 @@ public class ZeldaPlayer {
 		public void moveLeft(int delta) {
 			x -= speed * delta;
 		}
+		
+		
 		public boolean getBounds(Shape shape) {
 			return new Rectangle(x, y, width, HEIGHT).intersects(shape);
 		}
@@ -82,3 +103,4 @@ public class ZeldaPlayer {
 		}
 	
 	}
+
