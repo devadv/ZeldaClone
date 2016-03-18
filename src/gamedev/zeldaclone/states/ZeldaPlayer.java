@@ -14,32 +14,34 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class ZeldaPlayer {
 
-	private float x;
-	protected float y;
-	private float width = 25;
-	private float HEIGHT = 25;
+	private int x;
+	protected int y;
+	private float width = 32;
+	private float height = 32;
 	protected float speed = 0.20f;
 	private boolean isEnding = true;
+	private int screenWidth;
 	
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
 		x = gc.getWidth() / 2 -140;
 		y = gc.getHeight() -60;
+		screenWidth = gc.getWidth();
 	
 	}
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
 		g.setColor(Color.green);
-		g.fillRect(x, y, width, HEIGHT);
+		g.fillRect(x, y, width, height);
 		g.setColor(Color.white);
-		g.fillRect(67, 580, width, HEIGHT);
+		//g.fillRect(67, 580, width, height);
 	
 	}
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
 		
 		
-		if(gc.getInput().isKeyDown(Input.KEY_LEFT)) {
+		/*if(gc.getInput().isKeyDown(Input.KEY_LEFT)) {
 			moveLeft(delta);
 		}
 
@@ -57,49 +59,61 @@ public class ZeldaPlayer {
 		}
 		if (x + speed > gc.getWidth() - width - 254) {
 			moveLeft(delta);
-		}
+		}*/
 		
 		//The code below is as a test, as leaving the current map, it will go to another.
 		//In this case it will move to another testmap in State 0.
-		if (y + speed > gc.getHeight() - HEIGHT + 10) {
-			sbg.enterState(0);
-			}
-		if (y + speed < gc.getHeight() - HEIGHT - 625) {
-			sbg.enterState(0);
-			}
+//		if (y + speed > gc.getHeight() - height + 10) {
+//			sbg.enterState(0);
+//			}
+//		if (y + speed < gc.getHeight() - height - 625) {
+//			sbg.enterState(0);
+//			}
 		}
 	
-		public void moveDown(int delta) {
-			y += speed * delta;
+		public void moveDown() {
+			y += 32;
 		
 	}
-		public void moveUp(int delta) {
-			y -= speed * delta;
+		public void moveUp() {
+			y -= 32;
 		
 	}
-		public void moveRight(int delta) {
-			x += speed * delta;
-			
+		public void moveRight() {
+				x += 32;
 			
 		}
-		public void moveLeft(int delta) {
-			x -= speed * delta;
+		public void moveLeft() {
+			x -= 32;
 		}
 		
 		
 		public boolean getBounds(Shape shape) {
-			return new Rectangle(x, y, width, HEIGHT).intersects(shape);
+			return new Rectangle(x, y, width, height).intersects(shape);
 		}
 
-		public float getX() {
+		public int getX() {
 			return x;
 		}
 		
-		public float getY() {
+		public int getY() {
 			return y;
 		}
 		public float getWidth() {
 			return this.width;
+		}
+		
+		public void setX(int x) {
+			this.x = x;
+		}
+		public void setY(int y) {
+			this.y = y;
+		}
+		public float getSpeed() {
+			return speed;
+		}
+		public void setSpeed(float speed) {
+			this.speed = speed;
 		}
 	
 	}
