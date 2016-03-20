@@ -1,6 +1,5 @@
 package gamedev.zeldaclone.states;
 
-
 import java.awt.Font;
 import java.util.ArrayList;
 
@@ -38,24 +37,25 @@ public class TestTileMap {
 		player.init(gc, sbg);
 		player.setX(3 * TILESIZE);
 		player.setY(3 * TILESIZE);
-		mapWidth = tileMap.getTileWidth() * tileMap.getWidth();
+		mapWidth = tileMap.getWidth();
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		//g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492, 70);
+		// g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492,
+		// 70);
 		tileMap.render(0, 0);
 		g.setBackground(Color.orange);
 		player.render(gc, sbg, g);
-		if(debug) {
+		if (debug) {
 			drawDebugLines(g, TILESIZE);
 			drawTiledIDs(g);
 		}
-		//loop through data
+		// loop through data
 		int y = 0;
 		int x = 492;
 		g.setColor(Color.red);
-		for (String s : data){
-			g.drawString(s, x, y+=20);
+		for (String s : data) {
+			g.drawString(s, x, y += 20);
 		}
 
 	}
@@ -65,77 +65,124 @@ public class TestTileMap {
 		layerIndex = tileMap.getLayerIndex(layer);
 		player.update(gc, sbg, delta);
 		Input input = gc.getInput();
-		if(input.isKeyPressed(Input.KEY_D)) {
+		if (input.isKeyPressed(Input.KEY_D)) {
 			debug = !debug;
 		}
-		if(debug) {
-			if(input.isKeyPressed(Input.KEY_1)) {
+		if (debug) {
+			if (input.isKeyPressed(Input.KEY_1)) {
 				layer = "Wall";
 			}
-			if(input.isKeyPressed(Input.KEY_2)) {
+			if (input.isKeyPressed(Input.KEY_2)) {
 				layer = "Grass";
 			}
 		}
-		if(gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
-			player.moveLeft();
+		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
+			if (neighbourExist(-1, 0)) {
+				player.moveLeft();
+			}
 		}
 
-		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
-			if(player.getX() < mapWidth) {
-				player.moveRight();
+		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
+
+			if (neighbourExist(1, 0)) {
+				if (!(tileMap.getTileId(player.getX() / TILESIZE + 1, player.getY() / TILESIZE,
+						tileMap.getLayerIndex(layer)) == 25)) {
+					player.moveRight();
+				}
 			}
-			
-			//if(tileMap.getTileId((int)player.getX()/TILESIZE, (int)player.getY(), tileMap.getLayerIndex("Wall")) == 25) {
-				//System.out.println("Muur.");
-				
-				
-			
 		}
-		if(gc.getInput().isKeyPressed(Input.KEY_UP)) {
-			player.moveUp();
+		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
+			if (neighbourExist(0, -1)) {
+				player.moveUp();
+			}
 		}
-		if(gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
-			player.moveDown();
+		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
+			if (neighbourExist(0, 1)) {
+				player.moveDown();
+			}
 		}
 	}
-	public void generateData(){
+
+	public void generateData() {
 		data = new ArrayList<String>();
 		data.add("Choose D for debug mode");
 		data.add("-------------------------");
-		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Wall") +" " + tileMap.getLayerIndex("Grass"));
+		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Wall") + " "
+				+ tileMap.getLayerIndex("Grass"));
 		data.add("getLayerIndex: " + layerIndex);
-		data.add("getWidth / getHeight: " +tileMap.getWidth() +" / " + tileMap.getHeight());
+		data.add("getWidth / getHeight: " + tileMap.getWidth() + " / " + tileMap.getHeight());
 		data.add("getTileWidth: " + tileMap.getTileWidth());
 		data.add("getTileHeight: " + tileMap.getTileHeight());
-		data.add("getTileId: Field 1 from Wall = " + tileMap.getTileId(0, 0, tileMap.getLayerIndex("Wall")));
-		data.add("getTileId: Field 1 from Grass = " + tileMap.getTileId(0, 0, tileMap.getLayerIndex("Grass")));
+		data.add("getTileId: Field 1 from Wall = "
+				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Wall")));
+		data.add("getTileId: Field 1 from Grass = "
+				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Grass")));
 		data.add("PlayerX, Y: " + player.getX() + " " + player.getY());
-		data.add("PlayerTiledId " + tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE, layerIndex));
-		//data.add("North: " + tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE -1, layerIndex));
-		//data.add("East: " + tileMap.getTileId(player.getX() / TILESIZE +1, player.getY() / TILESIZE, layerIndex));
-		//data.add("South: " + tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE +1, layerIndex));
-		//data.add("West: " + tileMap.getTileId(player.getX() / TILESIZE -1, player.getY() / TILESIZE, layerIndex));
-		//data.add("Width/height: " + tileMap.getWidth() + " " + tileMap.getHeight());
+		data.add("PlayerTiledId "
+				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE, layerIndex));
+		if (neighbourExist(0, -1)) {
+			data.add("North: "
+					+ tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE - 1,
+							layerIndex));
+		} else {
+			data.add("North:  don't exists");
+		}
+		if (neighbourExist(1, 0)) {
+			data.add("East: "
+					+ tileMap.getTileId(player.getX() / TILESIZE + 1, player.getY() / TILESIZE,
+							layerIndex));
+		} else {
+			data.add("East:  don't exists");
+		}
+		if (neighbourExist(0, 1)) {
+			data.add("South: "
+					+ tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE + 1,
+							layerIndex));
+		}else{
+			data.add("South:  don't exists");
+		}
+		if (neighbourExist(-1, 0)) {
+			data.add("West: "
+					+ tileMap.getTileId(player.getX() / TILESIZE - 1, player.getY() / TILESIZE,
+							layerIndex));
+		}else{
+			data.add("West:  don't exists");
+		}
+
 	}
-	
+
 	public void drawDebugLines(Graphics g, int size) {
 		int resolutions = 480;
-		for(int i = 0; i < resolutions; i += size) {
+		for (int i = 0; i < resolutions; i += size) {
 			g.setColor(Color.white);
-			g.drawLine(i,  0,  i,  resolutions);
-			g.drawLine(0,  i,  resolutions, i);
-				
-			
+			g.drawLine(i, 0, i, resolutions);
+			g.drawLine(0, i, resolutions, i);
+
 		}
 	}
+
 	public void drawTiledIDs(Graphics g) {
 		g.setColor(Color.black);
 		for (int i = 0; i < tileMap.getWidth(); i++) {
 			for (int j = 0; j < tileMap.getHeight(); j++) {
-				g.drawString("" + tileMap.getTileId(i, j, layerIndex), (i * TILESIZE ) + 5,
+				g.drawString("" + tileMap.getTileId(i, j, layerIndex), (i * TILESIZE) + 5,
 						(j * TILESIZE) + 5);
 			}
 		}
 	}
-	
+
+	public boolean neighbourExist(int a, int b) {
+
+		try {
+
+			int valueID = tileMap.getTileId((player.getX() / TILESIZE) + a, player.getY()
+					/ TILESIZE + b, layerIndex);
+			
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return false;
+		}
+		return true;
+
+	}
+
 }
