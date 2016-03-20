@@ -121,9 +121,7 @@ public class TestTileMap {
 		data.add("PlayerTiledId "
 				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE, layerIndex));
 		if (neighbourExist(0, -1)) {
-			data.add("North: "
-					+ tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE - 1,
-							layerIndex));
+			data.add("North: " + getNextTileID(0, -1));
 		} else {
 			data.add("North:  don't exists");
 		}
@@ -138,14 +136,14 @@ public class TestTileMap {
 			data.add("South: "
 					+ tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE + 1,
 							layerIndex));
-		}else{
+		} else {
 			data.add("South:  don't exists");
 		}
 		if (neighbourExist(-1, 0)) {
 			data.add("West: "
 					+ tileMap.getTileId(player.getX() / TILESIZE - 1, player.getY() / TILESIZE,
 							layerIndex));
-		}else{
+		} else {
 			data.add("West:  don't exists");
 		}
 
@@ -171,18 +169,31 @@ public class TestTileMap {
 		}
 	}
 
-	public boolean neighbourExist(int a, int b) {
+	public boolean neighbourExist(int coordinateX, int coordinateY) {
 
 		try {
 
-			int valueID = tileMap.getTileId((player.getX() / TILESIZE) + a, player.getY()
-					/ TILESIZE + b, layerIndex);
-			
+			int valueID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
+					/ TILESIZE + coordinateY, layerIndex);
+
 		} catch (ArrayIndexOutOfBoundsException e) {
+
 			return false;
 		}
 		return true;
 
+	}
+
+	public int getNextTileID(int coordinateX, int coordinateY) {
+		int tileID;
+		try {
+			tileID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
+					/ TILESIZE + coordinateY, layerIndex);
+		} catch (ArrayIndexOutOfBoundsException e) {
+
+			return 0;
+		}
+		return tileID;
 	}
 
 }
