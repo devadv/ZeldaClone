@@ -1,0 +1,23 @@
+# Dungeon Adventure Game (gameplay: grotendeels gebaseerd op Link to the Past).
+
+ 
+
+Basis functionaliteit:
+
+- Wanneer je op de primaire actie-toets drukt, zwaait er en zwaardje aan de kant waar je naartoe loopt.
+- Spritesheet met animatie wordt geactiveerd.
+- Geluidje wordt afgespeeld
+
+- Er loopt een vijand/monster rond. 
+Wanneer er een collision plaatsvind tussen een monster en de hero, verliest de hero 1 hartje! Tenzij… 
+De hero met het zwaardje zwaait en het monster 1 tile verwijderd van de hero in de looprichting van de hero staat. 
+In dat geval sterft het monster.
+
+- Verliest de hero zijn laatste hartje dan sterft de hero.
+
+- Wanneer  een monster sterft, is er 50% kans dat er iets spawned.
+
+- Als er iets spawned: 50% kans op een groene edelsteen, 25% kans op een blauwe edelsteen, 25% kans op een hartje.
+
+- Wanneer de hero over een tile met een hartje of edelsteen loopt wordt het hartje bijgeteld aan de health 
+  (met een maximum aantal hart-containers) of de waarde van de edelsteen aan de geldteller.

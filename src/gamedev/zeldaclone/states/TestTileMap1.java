@@ -13,7 +13,7 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-public class TestTileMap {
+public class TestTileMap1 {
 
 	private TiledMap tileMap;
 	private Font awtFont;
@@ -46,7 +46,7 @@ public class TestTileMap {
 		// g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492,
 		// 70);
 		//tileMap.render(0, 0);
-		tileMap.render(0, 0, 0, 0, 32, 32, 0, true);
+		//tileMap.render(0, 0, 0, 0, 50, 50, 2, true);
 		g.setBackground(Color.orange);
 		player.render(gc, sbg, g);
 		if (debug) {
@@ -110,7 +110,6 @@ public class TestTileMap {
 				}
 			}
 		}
-			
 	}
 
 	public void generateData() {
@@ -155,11 +154,7 @@ public class TestTileMap {
 		} else {
 			data.add("West:  Doesn't exist");
 		}
-		int objectCount = tileMap.getObjectCount(0);
-		data.add("objectCount: " + objectCount);
-		for(int i = 0; i < objectCount; i++) {
-			data.add("* object: " + tileMap.getObjectName(0, i));
-		}
+
 	}
 
 	public void drawDebugLines(Graphics g, int size) {
