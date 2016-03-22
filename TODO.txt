@@ -1,5 +1,6 @@
 TODO list
 
+
 ---at first add testtilemap3.tmx to index. game gives runtime exception. After that commit and push.
 *--------------------------------------------------------------------------*
 Basic screen view is 960 x 640 divide by 32 = 30 tiles x 20 tiles.
@@ -11,7 +12,6 @@ In testfase different map, later we make one map = 9 basis screen views = 960 * 
 3. test if there is an collision with some tiles
 4. test and experiment with properties on tiles and exam if it is possible to use this. So is there a method in TiledMap that can
 look for properties on tiles. 
-
 
 
 Gameplay:
@@ -29,5 +29,8 @@ Tests:
 2. Test map with different layers * done
 3. How does collision works with these layers? is it possible with Slick2d? * done
 
+
 4. How to move the Hero? ( Hero Animation / Map moves) *( still the player moves not the map, in future game the maps has to move)  
+
+
 
