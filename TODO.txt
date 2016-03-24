@@ -12,6 +12,8 @@ In testfase different map, later we make one map = 9 basis screen views = 960 * 
 3. test if there is an collision with some tiles
 4. test and experiment with properties on tiles and exam if it is possible to use this. So is there a method in TiledMap that can
 look for properties on tiles. 
+5. Ask Linda to make items : heart , monsters and sword. TileSet with : grass, wall, water, stairs
+
 
 
 Gameplay:
