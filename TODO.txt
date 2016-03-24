@@ -11,7 +11,29 @@ Tests:
 
 1. Simple Map creation with Tiled
 2. Test map with different layers
-3. How does collision works with these layers? is it possible with Slick2d?
+3. Testing collisions with different layers.
 4. How to move the Hero? ( Hero Animation / Map moves)
 5. Choose between different colors Link: Green, Red and Blue from Ocarina of Time. You can buy the clothes later in the game.
-Green is the color you start your adventure with, blue lets you swim, and Red allows a better protection against fire.
+6. Green is the color you start your adventure with, blue lets you swim, and Red allows a better protection against fire.
+
+# Dungeon Adventure Game (gameplay: Based on Link to the Past).
+
+Basic functionality:
+
+- If you press the actionbutton, The hero swings his sword.
+- Animated Spritesheet will be activated.
+- A sound will be played
+
+- A monster just walks. 
+If a monster and the Hero collide, the Hero loses a life. Unless there's a special event.
+De hero met het zwaardje zwaait en het monster 1 tile verwijderd van de hero in de looprichting van de hero staat. 
+In dat geval sterft het monster.
+
+- Verliest de hero zijn laatste hartje dan sterft de hero.
+
+- Wanneer een monster sterft, is er 50% kans dat er iets spawned.
+
+- Als er iets spawned:  50% kans op een groene edelsteen, 25% kans op een blauwe edelsteen, 25% kans op een hartje.
+
+- Wanneer de hero over een tile met een hartje of edelsteen loopt wordt het hartje bijgeteld aan de health 
+  (met een maximum aantal hart-containers) of de waarde van de edelsteen aan de geldteller.

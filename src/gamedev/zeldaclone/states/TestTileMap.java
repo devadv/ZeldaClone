@@ -45,8 +45,8 @@ public class TestTileMap {
 			throws SlickException {
 		// g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492,
 		// 70);
-		//tileMap.render(0, 0);
-		tileMap.render(0, 0, 0, 0, 32, 32, 0, true);
+		tileMap.render(0, 0);
+		//tileMap.render(0, 0, 0, 0, 32, 32, 0, true);
 		g.setBackground(Color.orange);
 		player.render(gc, sbg, g);
 		if (debug) {
