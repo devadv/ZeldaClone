@@ -28,7 +28,7 @@ public class TestTileMap1 {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		tileMap = new TiledMap("res/testtilemap3.tmx");
+		tileMap = new TiledMap("res/testtilemap4.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
 		layer = "Wall";
@@ -45,7 +45,7 @@ public class TestTileMap1 {
 			throws SlickException {
 		// g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492,
 		// 70);
-		//tileMap.render(0, 0);
+		tileMap.render(0, 0);
 		//tileMap.render(0, 0, 0, 0, 50, 50, 2, true);
 		g.setBackground(Color.orange);
 		player.render(gc, sbg, g);

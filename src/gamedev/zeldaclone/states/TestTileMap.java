@@ -28,7 +28,7 @@ public class TestTileMap {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		tileMap = new TiledMap("res/testtilemap3.tmx");
+		tileMap = new TiledMap("res/testtilemap4.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
 		layer = "Wall";

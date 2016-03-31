@@ -29,11 +29,12 @@ If a monster and the Hero collide, the Hero loses a life. Unless there's a speci
 De hero met het zwaardje zwaait en het monster 1 tile verwijderd van de hero in de looprichting van de hero staat. 
 In dat geval sterft het monster.
 
-- Verliest de hero zijn laatste hartje dan sterft de hero.
+- If the hero loses all his hearts, the hero dies.
 
-- Wanneer een monster sterft, is er 50% kans dat er iets spawned.
+- If a monster dies, there's 50% chance something spawns.
 
-- Als er iets spawned:  50% kans op een groene edelsteen, 25% kans op een blauwe edelsteen, 25% kans op een hartje.
+- If something spawned: 50% chance a green emerald spawns, 25% chance a blue emerald spawns, 25% chance a heart spawns.
 
-- Wanneer de hero over een tile met een hartje of edelsteen loopt wordt het hartje bijgeteld aan de health 
-  (met een maximum aantal hart-containers) of de waarde van de edelsteen aan de geldteller.
+- If there is a tile with an item the hero walks over, it will be added.
+(Example: He walks over a heart, a heart will be added (unless he has all his hearts).
+If he walks over an emerald, the amount of emeralds will be added. (Green = 1, Blue = 5, Red = 20, purple = 50).
