@@ -31,7 +31,7 @@ public class TestTileMap {
 		tileMap = new TiledMap("res/testtilemap4.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
-		layer = "Wall";
+		layer = "Walls";
 		layerIndex = tileMap.getLayerIndex(layer);
 		data = new ArrayList<String>();
 		player = new ZeldaPlayer();
@@ -46,9 +46,11 @@ public class TestTileMap {
 		// g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492,
 		// 70);
 		tileMap.render(0, 0);
+		player.render(gc, sbg, g);
+		tileMap.render(0, 0, tileMap.getLayerIndex ("Water"));
 		//tileMap.render(0, 0, 0, 0, 32, 32, 0, true);
 		g.setBackground(Color.orange);
-		player.render(gc, sbg, g);
+		//player.render(gc, sbg, g);
 		if (debug) {
 			drawDebugLines(g, TILESIZE);
 			drawTiledIDs(g);
@@ -74,15 +76,21 @@ public class TestTileMap {
 		}
 		if (debug) {
 			if (input.isKeyPressed(Input.KEY_1)) {
-				layer = "Wall";
+				layer = "Walls";
 			}
 			if (input.isKeyPressed(Input.KEY_2)) {
-				layer = "Grass";
+				layer = "Water";
+			}
+			if (input.isKeyPressed(Input.KEY_3)) {
+				layer = "Treasure";
+			}
+			if (input.isKeyPressed(Input.KEY_4)) {
+				layer = "Stairs";
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
 			if (neighbourExist(-1, 0)) {
-				if (!(getNextTileID(-1, 0) == 25)) {
+				if (!(getNextTileID(-1, 0) == 26)) {
 					player.moveLeft();
 				}
 			}
@@ -91,43 +99,46 @@ public class TestTileMap {
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
 
 			if (neighbourExist(1, 0)) {
-				if (!(getNextTileID(1, 0) == 25)) {
+				if (!(getNextTileID(1, 0) == 26)) {
 					player.moveRight();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
 			if (neighbourExist(0, -1)) {
-				if(!(getNextTileID(0, -1) == 25)) {
+				if(!(getNextTileID(0, -1) == 26)) {
 					player.moveUp();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			if (neighbourExist(0, 1)) {
-				if (!(getNextTileID(0, 1) == 25)) {
+				if (!(getNextTileID(0, 1) == 26)) {
+				  layer = "Treasure";
+					if(!(getNextTileID(0, 1) == 465)) {
+						
 					player.moveDown();
+					}
 				}
 			}
 		}
-			
 	}
 
 	public void generateData() {
 		data = new ArrayList<String>();
 		data.add("Choose D for debug mode");
 		data.add("-------------------------");
-		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Wall")
-				+ " " + tileMap.getLayerIndex("Grass"));
+		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Walls")
+				+ " " + tileMap.getLayerIndex("Water"));
 		data.add("getLayerIndex: " + layerIndex);
 		data.add("getWidth / getHeight: " + tileMap.getWidth() + " / "
 				+ tileMap.getHeight());
 		data.add("getTileWidth: " + tileMap.getTileWidth());
 		data.add("getTileHeight: " + tileMap.getTileHeight());
 		data.add("getTileId: Field 1 from Wall = "
-				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Wall")));
+				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Walls")));
 		data.add("getTileId: Field 1 from Grass = "
-				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Grass")));
+				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Water")));
 		data.add("PlayerX, Y: " + player.getX() + " " + player.getY());
 		data.add("PlayerTiledId "
 				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY()
@@ -163,7 +174,7 @@ public class TestTileMap {
 	}
 
 	public void drawDebugLines(Graphics g, int size) {
-		int resolutions = 480;
+		int resolutions = 960;
 		for (int i = 0; i < resolutions; i += size) {
 			g.setColor(Color.white);
 			g.drawLine(i, 0, i, resolutions);
@@ -173,7 +184,7 @@ public class TestTileMap {
 	}
 
 	public void drawTiledIDs(Graphics g) {
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		for (int i = 0; i < tileMap.getWidth(); i++) {
 			for (int j = 0; j < tileMap.getHeight(); j++) {
 				g.drawString("" + tileMap.getTileId(i, j, layerIndex),

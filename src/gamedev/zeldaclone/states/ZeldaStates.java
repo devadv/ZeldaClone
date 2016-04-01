@@ -22,7 +22,7 @@ public class ZeldaStates extends StateBasedGame {
 		try {
 			AppGameContainer agc = new AppGameContainer(new ZeldaStates(
 					"Zelda Clone Game"));
-			agc.setDisplayMode(800, 640, false);
+			agc.setDisplayMode(960, 640, false);
 			agc.setTargetFrameRate(60);
 			agc.start();
 		} catch (SlickException e) {
