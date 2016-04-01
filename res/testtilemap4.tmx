@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test1" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
+ </tileset>
+ <tileset firstgid="145" name="test2" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/spritesheet_full.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="401" name="treasurechest" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/chests_32x32.png" width="96" height="160"/>
+ </tileset>
+ <tileset firstgid="416" name="treasurechest2" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="512" name="test3" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/Random tilesets/terrain.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Walls" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA5NiYGCQGiBMbzBq76i9o/aO2kuuvdjKL3LKNGLMIcdMSuSxuW/U3lF7h5O9A4EBGltOImAJAAA=
+  </data>
+ </layer>
+ <layer name="Ground" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGDggzEhfPGrvqL2j9o7aS6692Movcso0Yswhx0xK5MkN51F7R+0dKvYOBAAAmgG0NWAJAAA=
+  </data>
+ </layer>
+ <layer name="Water" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBQMd1BABB61d+jaOwpGwSgYfAAA7kNsDmAJAAA=
+  </data>
+ </layer>
+ <layer name="Treasure" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMglEwCoYeuMiIn09NsweLWQMBaBnOwxkAAA7zc6xgCQAA
+  </data>
+ </layer>
+ <layer name="Doors" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMglFAKnBhHFzmjIJRMAoGFwAA9JH0tmAJAAA=
+  </data>
+ </layer>
+ <layer name="Stairs" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAX0Bh0stDM7nYZmj4JRMApGwSgYBaOAOAAABQrUPGAJAAA=
+  </data>
+ </layer>
+</map>

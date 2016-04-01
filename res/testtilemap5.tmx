@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test5" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
+ </tileset>
+ <tileset firstgid="145" name="test6" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/dungeon_ground.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="401" name="treasurechests" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/Treasure chests/enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
+ </tileset>
+ <tileset firstgid="497" name="doors" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/Random tilesets/town_buildings.png" width="543" height="128"/>
+ </tileset>
+ <layer name="Walls" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA5NiYGCQGiBMbzBqL/3sHSgw0sJ5JNqLqyyhpByiVXlFSTiN2jtq76i91LN3IDAAJJqqr2AJAAA=
+  </data>
+ </layer>
+ <layer name="Stairs" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Ground" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGDggzEhfPGrvqL2j9g59ewcKkOvmgQjnUXtH7R21F9XegQAA12ILDWAJAAA=
+  </data>
+ </layer>
+ <layer name="Treasure" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMglEwCkYBNnCIcWD0joKhDwC3hPhTYAkAAA==
+  </data>
+ </layer>
+ <layer name="Doors" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMgqENRJkGRu8oGAWjYBTgAgDc2gF3YAkAAA==
+  </data>
+ </layer>
+</map>
