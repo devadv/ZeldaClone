@@ -5,7 +5,7 @@ import org.newdawn.slick.state.*;
 
 public class ZeldaMenu extends BasicGameState {
 
-	private TestTileMap testtilemap;
+	private TestTileMap2 testtilemap;
 
 	public ZeldaMenu(int i) {
 
@@ -13,7 +13,7 @@ public class ZeldaMenu extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		testtilemap = new TestTileMap();
+		testtilemap = new TestTileMap2();
 		testtilemap.init(gc, sbg);
 	}
 
