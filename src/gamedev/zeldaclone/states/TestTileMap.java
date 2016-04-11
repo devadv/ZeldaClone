@@ -28,16 +28,18 @@ public class TestTileMap {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		tileMap = new TiledMap("res/testtilemap4.tmx");
+		tileMap = new TiledMap("res/testtilemap12.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
-		layer = "Walls";
+		layer = "Wall";
 		layerIndex = tileMap.getLayerIndex(layer);
 		data = new ArrayList<String>();
 		player = new ZeldaPlayer();
 		player.init(gc, sbg);
-		player.setX(3 * TILESIZE);
-		player.setY(3 * TILESIZE);
+		int posX = tileMap.getObjectX(0, 1);
+		int posY = tileMap.getObjectY(0,1);
+		player.setX(posX);
+		player.setY(posY);
 		mapWidth = tileMap.getWidth();
 	}
 
@@ -47,7 +49,7 @@ public class TestTileMap {
 		// 70);
 		tileMap.render(0, 0);
 		player.render(gc, sbg, g);
-		tileMap.render(0, 0, tileMap.getLayerIndex ("Water"));
+		tileMap.render(0, 0, tileMap.getLayerIndex ("Wall"));
 		//tileMap.render(0, 0, 0, 0, 32, 32, 0, true);
 		g.setBackground(Color.orange);
 		//player.render(gc, sbg, g);
@@ -136,9 +138,8 @@ public class TestTileMap {
 		data.add("getTileWidth: " + tileMap.getTileWidth());
 		data.add("getTileHeight: " + tileMap.getTileHeight());
 		data.add("getTileId: Field 1 from Wall = "
-				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Walls")));
-		data.add("getTileId: Field 1 from Grass = "
-				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Water")));
+				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Wall")));
+		
 		data.add("PlayerX, Y: " + player.getX() + " " + player.getY());
 		data.add("PlayerTiledId "
 				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY()
@@ -166,11 +167,15 @@ public class TestTileMap {
 		} else {
 			data.add("West:  Doesn't exist");
 		}
+		data.add("");
+		data.add("");
+		data.add("");
 		int objectCount = tileMap.getObjectCount(0);
 		data.add("objectCount: " + objectCount);
 		for(int i = 0; i < objectCount; i++) {
 			data.add("* object: " + tileMap.getObjectName(0, i));
 		}
+		
 	}
 
 	public void drawDebugLines(Graphics g, int size) {

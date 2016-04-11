@@ -82,7 +82,7 @@ public class TestTileMap2 {
 				if (!(isBlocked(-1, 0))) {
 					player.moveLeft();
 				}else{
-					System.out.println("true");
+					
 				}
 			}
 		}
@@ -90,21 +90,21 @@ public class TestTileMap2 {
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
 
 			if (neighbourExist(1, 0)) {
-				if (!(getNextTileID(1, 0) == 25)) {
+				if (!(isBlocked(1, 0))) {
 					player.moveRight();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
 			if (neighbourExist(0, -1)) {
-				if (!(getNextTileID(0, -1) == 25)) {
+				if (!(isBlocked(0, -1))) {
 					player.moveUp();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			if (neighbourExist(0, 1)) {
-				if (!(getNextTileID(0, 1) == 25)) {
+				if (!(isBlocked(0, 1))) {
 					player.moveDown();
 				}
 			}
@@ -148,8 +148,8 @@ public class TestTileMap2 {
 		}
 		if (neighbourExist(-1, 0)) {
 			data.add("West: " + getNextTileID(-1, 0));
-			data.add("TilePropertyWest: "+ isBlocked(-1,0)+ "*/ isBlocked is only working ");
-			data.add("for this direction");
+			data.add("TilePropertyWest: "+ isBlocked(-1,0));
+			
 		} else {
 			data.add("West:  Doesn't exist");
 		}

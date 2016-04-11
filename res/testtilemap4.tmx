@@ -15,6 +15,9 @@
  <tileset firstgid="512" name="test3" tilewidth="32" tileheight="32">
   <image source="../../../Desktop/Tileset images/Random tilesets/terrain.png" width="1024" height="1024"/>
  </tileset>
+ <tileset firstgid="1536" name="32x32_enhanced_chest_by_enhancedstar-d5lvo9l" tilewidth="32" tileheight="32">
+  <image source="../../../Desktop/Tileset images/32x32_enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
+ </tileset>
  <layer name="Walls" width="30" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA5NiYGCQGiBMbzBq76i9o/aO2kuuvdjKL3LKNGLMIcdMSuSxuW/U3lF7h5O9A4EBGltOImAJAAA=
@@ -45,4 +48,8 @@
    H4sIAAAAAAAAA2NgGAX0Bh0stDM7nYZmj4JRMApGwSgYBaOAOAAABQrUPGAJAAA=
   </data>
  </layer>
+ <objectgroup name="Objectlaag 1" width="30" height="20">
+  <object name="start" x="96" y="96" width="32" height="32"/>
+  <object name="end" x="832" y="96" width="32" height="32"/>
+ </objectgroup>
 </map>
