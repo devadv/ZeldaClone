@@ -250,7 +250,7 @@ public class TestTileMap {
 	
 	public Position getStartPos(){
 		int startPosX = 0;
-		int startPosY = 1;
+		int startPosY = 0;
 		int groupID = 0;
 		String objectName1 = tileMap.getObjectName(groupID, 0);
 		if (objectName1.equals("start")){
