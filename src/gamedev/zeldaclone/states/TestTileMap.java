@@ -1,5 +1,9 @@
 package gamedev.zeldaclone.states;
 
+
+
+import gamedev.zeldaclone.utils.Position;
+
 import java.awt.Font;
 import java.util.ArrayList;
 
@@ -36,10 +40,9 @@ public class TestTileMap {
 		data = new ArrayList<String>();
 		player = new ZeldaPlayer();
 		player.init(gc, sbg);
-		int posX = tileMap.getObjectX(0, 1);
-		int posY = tileMap.getObjectY(0,1);
-		player.setX(posX);
-		player.setY(posY);
+		Position position = getStartPos();
+		player.setX(position.getX());
+		player.setY(position.getY());
 		mapWidth = tileMap.getWidth();
 	}
 
@@ -243,6 +246,21 @@ public class TestTileMap {
 			return 0;
 		}
 		return tileID;
+	}
+	
+	public Position getStartPos(){
+		int startPosX = 0;
+		int startPosY = 1;
+		int groupID = 0;
+		String objectName1 = tileMap.getObjectName(groupID, 0);
+		if (objectName1.equals("start")){
+			startPosX = tileMap.getObjectX(groupID, 0);
+			startPosY = tileMap.getObjectY(groupID, 0);
+		}else {
+			System.out.println("start object has to be the first one");
+		}
+			
+		return new Position(startPosX,startPosY);
 	}
 
 }
