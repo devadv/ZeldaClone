@@ -32,7 +32,7 @@ public class TestTileMap {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		tileMap = new TiledMap("res/testtilemap12.tmx");
+		tileMap = new TiledMap("res/testtilemap13.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
 		layer = "Wall";
@@ -40,9 +40,15 @@ public class TestTileMap {
 		data = new ArrayList<String>();
 		player = new ZeldaPlayer();
 		player.init(gc, sbg);
-		Position position = getStartPos();
+		Position position = getEndPos();
 		player.setX(position.getX());
 		player.setY(position.getY());
+//		Position position = getStartPos();
+//		player.setX(position.getX());
+//		player.setY(position.getY());
+		
+		
+		
 		mapWidth = tileMap.getWidth();
 	}
 
@@ -52,7 +58,8 @@ public class TestTileMap {
 		// 70);
 		tileMap.render(0, 0);
 		player.render(gc, sbg, g);
-		tileMap.render(0, 0, tileMap.getLayerIndex ("Wall"));
+		
+		//tileMap.render(0, 0, tileMap.getLayerIndex ("Wall"));
 		//tileMap.render(0, 0, 0, 0, 32, 32, 0, true);
 		g.setBackground(Color.orange);
 		//player.render(gc, sbg, g);
@@ -119,13 +126,16 @@ public class TestTileMap {
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			if (neighbourExist(0, 1)) {
 				if (!(getNextTileID(0, 1) == 26)) {
-				  layer = "Treasure";
+				 // layer = "Treasure";
 					if(!(getNextTileID(0, 1) == 465)) {
 						
 					player.moveDown();
 					}
 				}
 			}
+		}
+		if(player.getPosition().getX()==getEndPos().getX()&& player.getPosition().getY()==getEndPos().getY()){
+			System.out.println("End.");
 		}
 	}
 
@@ -262,5 +272,20 @@ public class TestTileMap {
 			
 		return new Position(startPosX,startPosY);
 	}
+	public Position getEndPos() {
+		
+		int endPosX = 0;
+		int endPosY = 0;
+		int groupID = 0;
+		String objectName1 = tileMap.getObjectName(groupID, 1);
+		if (objectName1.equals("end")){
+			endPosX = tileMap.getObjectX(groupID, 1);
+			endPosY = tileMap.getObjectY(groupID, 1);
+	}
+		else {
+			System.out.println("end object has to be the second one");
+		}
+		return new Position(endPosX,endPosY);
 
+	}
 }

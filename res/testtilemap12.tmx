@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="dungeon_ground" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/dungeon_ground.png" width="512" height="512"/>
+  <image source="tilesets/dungeon_ground.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="257" name="32x32_ortho_dungeon_tile_Denzi110515-1" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
+  <image source="tilesets/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
   <tile id="25">
    <properties>
     <property name="blocked" value="true"/>
@@ -12,7 +12,7 @@
   </tile>
  </tileset>
  <tileset firstgid="401" name="32x32_enhanced_chest_by_enhancedstar-d5lvo9l" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/32x32_enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
+  <image source="tilesets/32x32_enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
   <tile id="50">
    <properties>
     <property name="chest" value="true"/>
@@ -20,7 +20,7 @@
   </tile>
  </tileset>
  <tileset firstgid="497" name="terrain" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/Random tilesets/terrain.png" width="1024" height="1024"/>
+  <image source="tilesets/terrain.png" width="1024" height="1024"/>
  </tileset>
  <layer name="Wall" width="30" height="20">
   <data encoding="base64" compression="gzip">
@@ -28,7 +28,7 @@
   </data>
  </layer>
  <objectgroup name="stairs" width="30" height="20">
-  <object name="end" x="832" y="96" width="32" height="32"/>
   <object name="start" x="96" y="96" width="32" height="32"/>
+  <object name="end" x="832" y="96" width="32" height="32"/>
  </objectgroup>
 </map>

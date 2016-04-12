@@ -1,5 +1,7 @@
 package gamedev.zeldaclone.states;
 
+import gamedev.zeldaclone.utils.Position;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -33,7 +35,7 @@ public class ZeldaPlayer {
 		g.setColor(Color.green);
 		g.fillRect(x, y, width, height);
 		g.setColor(Color.white);
-		// g.fillRect(67, 580, width, height);
+		//g.fillRect(67, 580, width, height);
 
 	}
 
@@ -109,6 +111,10 @@ public class ZeldaPlayer {
 
 	public void setSpeed(float speed) {
 		this.speed = speed;
+	}
+	public Position getPosition() {
+		return new Position(x, y);
+		
 	}
 
 }
