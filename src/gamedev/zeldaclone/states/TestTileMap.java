@@ -32,7 +32,7 @@ public class TestTileMap {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		tileMap = new TiledMap("res/testtilemap13.tmx");
+		tileMap = new TiledMap("res/testtilemap5.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
 		layer = "Wall";
@@ -40,7 +40,7 @@ public class TestTileMap {
 		data = new ArrayList<String>();
 		player = new ZeldaPlayer();
 		player.init(gc, sbg);
-		Position position = getEndPos();
+		Position position = getStartPos();
 		player.setX(position.getX());
 		player.setY(position.getY());
 //		Position position = getStartPos();
@@ -135,7 +135,11 @@ public class TestTileMap {
 			}
 		}
 		if(player.getPosition().getX()==getEndPos().getX()&& player.getPosition().getY()==getEndPos().getY()){
+			tileMap = new TiledMap("res/testtilemap13.tmx");
 			System.out.println("End.");
+		}
+		if(player.getPosition().getX()==getStartPos().getX()&& player.getPosition().getY()==getStartPos().getY()){
+			System.out.println("Start.");
 		}
 	}
 
