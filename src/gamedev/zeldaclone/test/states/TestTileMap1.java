@@ -1,4 +1,4 @@
-package gamedev.zeldaclone.states;
+package gamedev.zeldaclone.test.states;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-public class TestTileMap2 {
+public class TestTileMap1 {
 
 	private TiledMap tileMap;
 	private Font awtFont;
@@ -26,8 +26,9 @@ public class TestTileMap2 {
 	private ZeldaPlayer player;
 	private int mapWidth;
 
-	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		tileMap = new TiledMap("res/testtilemap10.tmx");
+	public void init(GameContainer gc, StateBasedGame sbg)
+			throws SlickException {
+		tileMap = new TiledMap("res/testtilemap2.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
 		layer = "Wall";
@@ -40,11 +41,12 @@ public class TestTileMap2 {
 		mapWidth = tileMap.getWidth();
 	}
 
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
+			throws SlickException {
 		// g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492,
 		// 70);
 		tileMap.render(0, 0);
-		// tileMap.render(0, 0, 0, 0, 50, 50, 2, true);
+		//tileMap.render(0, 0, 0, 0, 50, 50, 2, true);
 		g.setBackground(Color.orange);
 		player.render(gc, sbg, g);
 		if (debug) {
@@ -61,7 +63,8 @@ public class TestTileMap2 {
 
 	}
 
-	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+	public void update(GameContainer gc, StateBasedGame sbg, int delta)
+			throws SlickException {
 		generateData();
 		layerIndex = tileMap.getLayerIndex(layer);
 		player.update(gc, sbg, delta);
@@ -79,10 +82,8 @@ public class TestTileMap2 {
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
 			if (neighbourExist(-1, 0)) {
-				if (!(isBlocked(-1, 0))) {
+				if (!(getNextTileID(-1, 0) == 25)) {
 					player.moveLeft();
-				}else{
-					
 				}
 			}
 		}
@@ -90,21 +91,21 @@ public class TestTileMap2 {
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
 
 			if (neighbourExist(1, 0)) {
-				if (!(isBlocked(1, 0))) {
+				if (!(getNextTileID(1, 0) == 25)) {
 					player.moveRight();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
 			if (neighbourExist(0, -1)) {
-				if (!(isBlocked(0, -1))) {
+				if(!(getNextTileID(0, -1) == 25)) {
 					player.moveUp();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			if (neighbourExist(0, 1)) {
-				if (!(isBlocked(0, 1))) {
+				if (!(getNextTileID(0, 1) == 25)) {
 					player.moveDown();
 				}
 			}
@@ -115,10 +116,11 @@ public class TestTileMap2 {
 		data = new ArrayList<String>();
 		data.add("Choose D for debug mode");
 		data.add("-------------------------");
-		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Wall") + " "
-				+ tileMap.getLayerIndex("Grass"));
+		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Wall")
+				+ " " + tileMap.getLayerIndex("Grass"));
 		data.add("getLayerIndex: " + layerIndex);
-		data.add("getWidth / getHeight: " + tileMap.getWidth() + " / " + tileMap.getHeight());
+		data.add("getWidth / getHeight: " + tileMap.getWidth() + " / "
+				+ tileMap.getHeight());
 		data.add("getTileWidth: " + tileMap.getTileWidth());
 		data.add("getTileHeight: " + tileMap.getTileHeight());
 		data.add("getTileId: Field 1 from Wall = "
@@ -127,33 +129,31 @@ public class TestTileMap2 {
 				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Grass")));
 		data.add("PlayerX, Y: " + player.getX() + " " + player.getY());
 		data.add("PlayerTiledId "
-				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY() / TILESIZE, layerIndex));
+				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY()
+						/ TILESIZE, layerIndex));
 		if (neighbourExist(0, -1)) {
 			data.add("North: " + getNextTileID(0, -1));
-			data.add("TilePropertyNorth: "+ isBlocked(0,-1));
 		} else {
 			data.add("North:  Doesn't exist");
 		}
 		if (neighbourExist(1, 0)) {
 			data.add("East: " + getNextTileID(1, 0));
-			data.add("TilePropertyEast: "+ isBlocked(1,0));
+
 		} else {
 			data.add("East:  Doesn't exist");
 		}
 		if (neighbourExist(0, 1)) {
 			data.add("South: " + getNextTileID(0, 1));
-			data.add("TilePropertySouth: "+ isBlocked(0,1));
+
 		} else {
 			data.add("South:  Doesn't exist");
 		}
 		if (neighbourExist(-1, 0)) {
 			data.add("West: " + getNextTileID(-1, 0));
-			data.add("TilePropertyWest: "+ isBlocked(-1,0));
-			
+
 		} else {
 			data.add("West:  Doesn't exist");
 		}
-		
 
 	}
 
@@ -171,22 +171,17 @@ public class TestTileMap2 {
 		g.setColor(Color.black);
 		for (int i = 0; i < tileMap.getWidth(); i++) {
 			for (int j = 0; j < tileMap.getHeight(); j++) {
-				g.drawString("" + tileMap.getTileId(i, j, layerIndex), (i * TILESIZE) + 5,
-						(j * TILESIZE) + 5);
+				g.drawString("" + tileMap.getTileId(i, j, layerIndex),
+						(i * TILESIZE) + 5, (j * TILESIZE) + 5);
 			}
 		}
 	}
-
 	/**
 	 * Checks if it's the end of the map.
-	 * 
-	 * @param coordinateX
-	 *            The X coordinates of the direction the player moves.
-	 * @param coordinateY
-	 *            The Y coordinates of the direction the player moves.
+	 * @param coordinateX The X coordinates of the direction the player moves.
+	 * @param coordinateY The Y coordinates of the direction the player moves.
 	 * @return true if tile exists. And false if it doesn't exist.
-	 * 
-	 *         <pre>
+	 * <pre>
 	 * Coordinates example.
 	 * 		North (0, -1), 
 	 * 		East (1, 0),
@@ -198,8 +193,9 @@ public class TestTileMap2 {
 
 		try {
 
-			int valueID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
-					/ TILESIZE + coordinateY, layerIndex);
+			int valueID = tileMap.getTileId((player.getX() / TILESIZE)
+					+ coordinateX, player.getY() / TILESIZE + coordinateY,
+					layerIndex);
 
 		} catch (ArrayIndexOutOfBoundsException e) {
 
@@ -208,21 +204,19 @@ public class TestTileMap2 {
 		return true;
 
 	}
-
 	/**
 	 * 
-	 * @param coordinateX
-	 *            The X coordinates of the direction the player moves.
-	 * @param coordinateY
-	 *            The Y coordinates of the direction the player moves.
+	 * @param coordinateX The X coordinates of the direction the player moves.
+	 * @param coordinateY The Y coordinates of the direction the player moves.
 	 * @return true if tile exists. And false if it doesn't exist.
 	 */
 
 	public int getNextTileID(int coordinateX, int coordinateY) {
 		int tileID;
 		try {
-			tileID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
-					/ TILESIZE + coordinateY, layerIndex);
+			tileID = tileMap.getTileId(
+					(player.getX() / TILESIZE) + coordinateX, player.getY()
+							/ TILESIZE + coordinateY, layerIndex);
 		} catch (ArrayIndexOutOfBoundsException e) {
 
 			return 0;
@@ -230,13 +224,4 @@ public class TestTileMap2 {
 		return tileID;
 	}
 
-	public boolean isBlocked(int coordinateX, int coordinateY) {
-		int tileID = getNextTileID(coordinateX, coordinateY);
-		String value = tileMap.getTileProperty(tileID, "blocked", "false");
-		if (value.equals("true")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }

@@ -1,4 +1,4 @@
-package gamedev.zeldaclone.states;
+package gamedev.zeldaclone.test.states;
 
 import gamedev.zeldaclone.utils.Position;
 

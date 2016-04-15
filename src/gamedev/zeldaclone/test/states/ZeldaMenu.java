@@ -1,4 +1,4 @@
-package gamedev.zeldaclone.states;
+package gamedev.zeldaclone.test.states;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;

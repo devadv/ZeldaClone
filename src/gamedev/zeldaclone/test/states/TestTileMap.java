@@ -1,4 +1,8 @@
-package gamedev.zeldaclone.states;
+package gamedev.zeldaclone.test.states;
+
+
+
+import gamedev.zeldaclone.utils.Position;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -13,7 +17,7 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-public class TestTileMap1 {
+public class TestTileMap {
 
 	private TiledMap tileMap;
 	private Font awtFont;
@@ -28,7 +32,7 @@ public class TestTileMap1 {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		tileMap = new TiledMap("res/testtilemap2.tmx");
+		tileMap = new TiledMap("res/testtilemap5.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
 		layer = "Wall";
@@ -36,8 +40,15 @@ public class TestTileMap1 {
 		data = new ArrayList<String>();
 		player = new ZeldaPlayer();
 		player.init(gc, sbg);
-		player.setX(3 * TILESIZE);
-		player.setY(3 * TILESIZE);
+		Position position = getStartPos();
+		player.setX(position.getX());
+		player.setY(position.getY());
+//		Position position = getStartPos();
+//		player.setX(position.getX());
+//		player.setY(position.getY());
+		
+		
+		
 		mapWidth = tileMap.getWidth();
 	}
 
@@ -46,9 +57,12 @@ public class TestTileMap1 {
 		// g.drawString("getWidth: Width in tiles: " + tileMap.getWidth(),492,
 		// 70);
 		tileMap.render(0, 0);
-		//tileMap.render(0, 0, 0, 0, 50, 50, 2, true);
-		g.setBackground(Color.orange);
 		player.render(gc, sbg, g);
+		
+		//tileMap.render(0, 0, tileMap.getLayerIndex ("Wall"));
+		//tileMap.render(0, 0, 0, 0, 32, 32, 0, true);
+		g.setBackground(Color.orange);
+		//player.render(gc, sbg, g);
 		if (debug) {
 			drawDebugLines(g, TILESIZE);
 			drawTiledIDs(g);
@@ -74,15 +88,21 @@ public class TestTileMap1 {
 		}
 		if (debug) {
 			if (input.isKeyPressed(Input.KEY_1)) {
-				layer = "Wall";
+				layer = "Walls";
 			}
 			if (input.isKeyPressed(Input.KEY_2)) {
-				layer = "Grass";
+				layer = "Water";
+			}
+			if (input.isKeyPressed(Input.KEY_3)) {
+				layer = "Treasure";
+			}
+			if (input.isKeyPressed(Input.KEY_4)) {
+				layer = "Stairs";
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
 			if (neighbourExist(-1, 0)) {
-				if (!(getNextTileID(-1, 0) == 25)) {
+				if (!(getNextTileID(-1, 0) == 26)) {
 					player.moveLeft();
 				}
 			}
@@ -91,24 +111,38 @@ public class TestTileMap1 {
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
 
 			if (neighbourExist(1, 0)) {
-				if (!(getNextTileID(1, 0) == 25)) {
+				if (!(getNextTileID(1, 0) == 26)) {
 					player.moveRight();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
 			if (neighbourExist(0, -1)) {
-				if(!(getNextTileID(0, -1) == 25)) {
+				if(!(getNextTileID(0, -1) == 26)) {
 					player.moveUp();
 				}
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			if (neighbourExist(0, 1)) {
-				if (!(getNextTileID(0, 1) == 25)) {
+				if (!(getNextTileID(0, 1) == 26)) {
+				 // layer = "Treasure";
+					if(!(getNextTileID(0, 1) == 465)) {
+						
 					player.moveDown();
+					}
 				}
 			}
+		}
+		if(player.getPosition().getX()==getEndPos().getX()&& player.getPosition().getY()==getEndPos().getY()){
+			tileMap = new TiledMap("res/testtilemap13.tmx");
+			Position position = getStartPos();
+			player.setX(position.getX());
+			player.setY(position.getY());
+			System.out.println("End.");
+		}
+		if(player.getPosition().getX()==getStartPos().getX()&& player.getPosition().getY()==getStartPos().getY()){
+			System.out.println("Start.");
 		}
 	}
 
@@ -116,8 +150,8 @@ public class TestTileMap1 {
 		data = new ArrayList<String>();
 		data.add("Choose D for debug mode");
 		data.add("-------------------------");
-		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Wall")
-				+ " " + tileMap.getLayerIndex("Grass"));
+		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Walls")
+				+ " " + tileMap.getLayerIndex("Water"));
 		data.add("getLayerIndex: " + layerIndex);
 		data.add("getWidth / getHeight: " + tileMap.getWidth() + " / "
 				+ tileMap.getHeight());
@@ -125,8 +159,7 @@ public class TestTileMap1 {
 		data.add("getTileHeight: " + tileMap.getTileHeight());
 		data.add("getTileId: Field 1 from Wall = "
 				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Wall")));
-		data.add("getTileId: Field 1 from Grass = "
-				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Grass")));
+		
 		data.add("PlayerX, Y: " + player.getX() + " " + player.getY());
 		data.add("PlayerTiledId "
 				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY()
@@ -154,11 +187,19 @@ public class TestTileMap1 {
 		} else {
 			data.add("West:  Doesn't exist");
 		}
-
+		data.add("");
+		data.add("");
+		data.add("");
+		int objectCount = tileMap.getObjectCount(0);
+		data.add("objectCount: " + objectCount);
+		for(int i = 0; i < objectCount; i++) {
+			data.add("* object: " + tileMap.getObjectName(0, i));
+		}
+		
 	}
 
 	public void drawDebugLines(Graphics g, int size) {
-		int resolutions = 480;
+		int resolutions = 960;
 		for (int i = 0; i < resolutions; i += size) {
 			g.setColor(Color.white);
 			g.drawLine(i, 0, i, resolutions);
@@ -168,7 +209,7 @@ public class TestTileMap1 {
 	}
 
 	public void drawTiledIDs(Graphics g) {
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		for (int i = 0; i < tileMap.getWidth(); i++) {
 			for (int j = 0; j < tileMap.getHeight(); j++) {
 				g.drawString("" + tileMap.getTileId(i, j, layerIndex),
@@ -223,5 +264,35 @@ public class TestTileMap1 {
 		}
 		return tileID;
 	}
+	
+	public Position getStartPos(){
+		int startPosX = 0;
+		int startPosY = 0;
+		int groupID = 0;
+		String objectName1 = tileMap.getObjectName(groupID, 0);
+		if (objectName1.equals("start")){
+			startPosX = tileMap.getObjectX(groupID, 0);
+			startPosY = tileMap.getObjectY(groupID, 0);
+		}else {
+			System.out.println("start object has to be the first one");
+		}
+			
+		return new Position(startPosX,startPosY);
+	}
+	public Position getEndPos() {
+		
+		int endPosX = 0;
+		int endPosY = 0;
+		int groupID = 0;
+		String objectName1 = tileMap.getObjectName(groupID, 1);
+		if (objectName1.equals("end")){
+			endPosX = tileMap.getObjectX(groupID, 1);
+			endPosY = tileMap.getObjectY(groupID, 1);
+	}
+		else {
+			System.out.println("end object has to be the second one");
+		}
+		return new Position(endPosX,endPosY);
 
+	}
 }
