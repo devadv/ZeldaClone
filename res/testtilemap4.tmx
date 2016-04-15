@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test1" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
+  <image source="tilesets/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
+  <tile id="25">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="145" name="test2" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/spritesheet_full.png" width="512" height="512"/>
+  <image source="tilesets/spritesheet_full.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="401" name="treasurechest" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/chests_32x32.png" width="96" height="160"/>
+  <image source="tilesets/chests_32x32.png" width="96" height="160"/>
  </tileset>
  <tileset firstgid="416" name="treasurechest2" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
+  <image source="tilesets/enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
  </tileset>
  <tileset firstgid="512" name="test3" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/Random tilesets/terrain.png" width="1024" height="1024"/>
+  <image source="tilesets/terrain.png" width="1024" height="1024"/>
  </tileset>
  <tileset firstgid="1536" name="32x32_enhanced_chest_by_enhancedstar-d5lvo9l" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/32x32_enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
+  <image source="tilesets/32x32_enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
  </tileset>
  <layer name="Walls" width="30" height="20">
   <data encoding="base64" compression="gzip">

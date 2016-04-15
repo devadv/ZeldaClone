@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test5" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
+  <image source="tilesets/32x32_ortho_dungeon_tile_Denzi110515-1.png" width="256" height="592"/>
+  <tile id="25">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="145" name="test6" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/dungeon_ground.png" width="512" height="512"/>
+  <image source="tilesets/dungeon_ground.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="401" name="treasurechests" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/Treasure chests/enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
+  <image source="tilesets/enhanced_chest_by_enhancedstar-d5lvo9l.png" width="384" height="256"/>
  </tileset>
  <tileset firstgid="497" name="doors" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/Random tilesets/town_buildings.png" width="543" height="128"/>
+  <image source="tilesets/town_buildings.png" width="543" height="128"/>
  </tileset>
- <layer name="Walls" width="30" height="20">
+ <tileset firstgid="561" name="terrain" tilewidth="32" tileheight="32">
+  <image source="tilesets/terrain.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Wall" width="30" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA5NiYGCQGiBMbzBqL/3sHSgw0sJ5JNqLqyyhpByiVXlFSTiN2jtq76i91LN3IDAAJJqqr2AJAAA=
+   H4sIAAAAAAAAA5NiYGCQGiAszEhfPFjs3cVCO7tmsOC2d6SF86i9w9NebFiUifxyiFi95Lp5IMJ51F7K7T1MBXvxmTHY/Dvc7R0IDAAXegutYAkAAA==
   </data>
  </layer>
- <layer name="Stairs" width="30" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
-  </data>
- </layer>
- <layer name="Ground" width="30" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGDggzEhfPGrvqL2j9g59ewcKkOvmgQjnUXtH7R21F9XegQAA12ILDWAJAAA=
-  </data>
- </layer>
- <layer name="Treasure" width="30" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGAWjYBSMglEwCkYBNnCIcWD0joKhDwC3hPhTYAkAAA==
-  </data>
- </layer>
- <layer name="Doors" width="30" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGAWjYBSMgqENRJkGRu8oGAWjYBTgAgDc2gF3YAkAAA==
-  </data>
- </layer>
+ <objectgroup name="stairs" width="30" height="20">
+  <object name="start" x="96" y="96" width="32" height="32"/>
+  <object name="end" x="832" y="96" width="32" height="32"/>
+ </objectgroup>
 </map>

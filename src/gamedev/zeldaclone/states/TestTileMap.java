@@ -136,6 +136,9 @@ public class TestTileMap {
 		}
 		if(player.getPosition().getX()==getEndPos().getX()&& player.getPosition().getY()==getEndPos().getY()){
 			tileMap = new TiledMap("res/testtilemap13.tmx");
+			Position position = getStartPos();
+			player.setX(position.getX());
+			player.setY(position.getY());
 			System.out.println("End.");
 		}
 		if(player.getPosition().getX()==getStartPos().getX()&& player.getPosition().getY()==getStartPos().getY()){

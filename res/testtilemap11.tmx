@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="wooden_floor_tiles" tilewidth="32" tileheight="32">
-  <image source="../../../Desktop/Tileset images/wooden_floor_tiles.png" width="288" height="256"/>
+  <image source="tilesets/wooden_floor_tiles.png" width="288" height="256"/>
+ </tileset>
+ <tileset firstgid="73" name="interior_tileset" tilewidth="32" tileheight="32">
+  <image source="tilesets/interior_tileset.png" width="512" height="528"/>
  </tileset>
  <layer name="Tilelaag 1" width="30" height="20">
   <data encoding="base64" compression="gzip">
