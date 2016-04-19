@@ -1,28 +1,25 @@
 package gamedev.zeldaclone.level;
 
 import java.util.ArrayList;
-
 import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * 
- * @author nrotmeyer
+ * @author nrotmeyer & badev
  *
  */
 
 public class Map {
-	/** Position X of the map, relative to the top left corner. */
+	/** Position x of the map, relative to the top left corner. */
 	private int x = 0;
-	/** Position Y of the map, relative to the top left corner. */
+	/** Position y of the map, relative to the top left corner. */
 	private int y = 0;
 	/** Uses the format .tmx to load the map. **/
 	private TiledMap tileMap;
-	/** the tilesize in pixels*/
+	/** the tilesize in pixels */
 	private int TILESIZE = 32;
 
 	/** Default constructor with standard map. */
@@ -30,15 +27,15 @@ public class Map {
 		try {
 			tileMap = new TiledMap("res/testtilemap15.tmx");
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 	/**
-	 * Constructor with tmx file
+	 * Constructor for tiledmap file in tmx format
 	 * 
 	 * @param ref
-	 *            the String reference to file
+	 *            the String reference to *.tmx file
 	 * 
 	 * */
 
@@ -56,7 +53,9 @@ public class Map {
 	public void renderTileMap() {
 		tileMap.render(x, y);
 	}
-	/**This is for the second layer.
+
+	/**
+	 * This is for the second layer.
 	 * 
 	 * @param layerIndex
 	 */
@@ -110,15 +109,32 @@ public class Map {
 		return objects;
 
 	}
-	/**Gets the tile id. 
-	 * @param x, y*/
+
+	/**
+	 * Retrieve the tile id.
+	 * 
+	 * @param x
+	 *            postion of x
+	 * @param y
+	 *            position of y
+	 * @param layerIndex
+	 *            the index number of the layer
+	 */
 	public int getTileID(int x, int y, int layerIndex) {
 		return tileMap.getTileId(x, y, layerIndex);
-		
+
 	}
-	/**Checks tile property blocked is true. 
-	 * @param x, y coordinates
-	 * @param layerIndex*/
+
+	/**
+	 * Checks if tile property blocked is true.
+	 * 
+	 * @param x
+	 *            postion of x
+	 * @param y
+	 *            position of y
+	 * @param layerIndex
+	 *            the index number of the layer
+	 */
 	public boolean isBlocked(int x, int y, int layerIndex) {
 		int tileID = getTileID(x, y, layerIndex);
 		String value = tileMap.getTileProperty(tileID, "blocked", "false");
@@ -128,11 +144,15 @@ public class Map {
 			return false;
 		}
 	}
-	/** for debug purposes
-	 * @param g Graphics form Slick2d 
+
+	/**
+	 * for debug purposes
+	 * 
+	 * @param g
+	 *            Graphics form Slick2d
 	 **/
 	public void drawDebugLines(Graphics g) {
-		int resolutions = getWidth()* TILESIZE;
+		int resolutions = getWidth() * TILESIZE;
 		for (int i = 0; i < resolutions; i += TILESIZE) {
 			g.setColor(Color.white);
 			g.drawLine(i, 0, i, resolutions);

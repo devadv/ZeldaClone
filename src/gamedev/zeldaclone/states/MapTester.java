@@ -2,10 +2,9 @@ package gamedev.zeldaclone.states;
 
 import java.util.ArrayList;
 
-import javax.swing.DebugGraphics;
-
 import gamdev.zeldaclone.entities.Player;
 import gamedev.zeldaclone.level.Map;
+import gamedev.zeldaclone.utils.Direction;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -52,20 +51,50 @@ public class MapTester extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 
-		Input input = gc.getInput();
-		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
-			
-		}
-		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
-			
-		}
-		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
-			
-		}
-		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
-			
-		}
+		listenKeyboard(gc);
 
+	}
+	public boolean isBlocked(Direction dir){
+		int posX = (int) player.getX()/TILESIZE;
+		int posY = (int) player.getY()/TILESIZE;
+		int layerindex = 0;
+		if(!map.isBlocked(posX + dir.dX() , posY + dir.dY(), layerindex)){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	public void listenKeyboard(GameContainer gc){
+		Input input = gc.getInput();
+		
+		if(input.isKeyPressed(Input.KEY_RIGHT)){
+			
+			if(!isBlocked(Direction.EAST)){
+				player.setX(player.getX()+TILESIZE);
+			}
+			
+		}
+		if(input.isKeyPressed(Input.KEY_LEFT)){
+
+			if(!isBlocked(Direction.WEST)){
+				player.setX(player.getX()-TILESIZE);
+			}
+			
+		}
+		if(input.isKeyPressed(Input.KEY_UP)){
+
+			if(!isBlocked(Direction.NORTH)){
+				player.setY(player.getY()-TILESIZE);
+			}
+			
+		}
+		if(input.isKeyPressed(Input.KEY_DOWN)){
+
+			if(!isBlocked(Direction.SOUTH)){
+				player.setY(player.getY()+TILESIZE);
+			}
+			
+		}
 	}
 
 	public void generateData() {
@@ -82,12 +111,7 @@ public class MapTester extends BasicGameState {
 		}
 	}
 
-	public boolean isBlocked() {
-		int posX = player.getX() / 32;
-		int posY = player.getY() / 32;
-		return true;
 
-	}
 
 	@Override
 	public int getID() {
