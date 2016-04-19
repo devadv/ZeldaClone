@@ -2,6 +2,7 @@ package gamedev.zeldaclone.level;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -21,6 +22,8 @@ public class Map {
 	private int y = 0;
 	/** Uses the format .tmx to load the map. **/
 	private TiledMap tileMap;
+	/** the tilesize in pixels*/
+	private int TILESIZE = 32;
 
 	/** Default constructor with standard map. */
 	public Map() {
@@ -30,6 +33,23 @@ public class Map {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	/**
+	 * Constructor with tmx file
+	 * 
+	 * @param ref
+	 *            the String reference to file
+	 * 
+	 * */
+
+	public Map(String ref) {
+
+		try {
+			tileMap = new TiledMap(ref);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/** Shows the map at the default position, which is 0,0. */
@@ -108,4 +128,17 @@ public class Map {
 			return false;
 		}
 	}
+	/** for debug purposes
+	 * @param g Graphics form Slick2d 
+	 **/
+	public void drawDebugLines(Graphics g) {
+		int resolutions = getWidth()* TILESIZE;
+		for (int i = 0; i < resolutions; i += TILESIZE) {
+			g.setColor(Color.white);
+			g.drawLine(i, 0, i, resolutions);
+			g.drawLine(0, i, resolutions, i);
+
+		}
+	}
+
 }

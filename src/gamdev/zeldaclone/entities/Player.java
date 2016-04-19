@@ -35,29 +35,8 @@ public class Player {
 
 	}
 
-	public void update(GameContainer gc, StateBasedGame sbg, int delta)
-			throws SlickException {
 
-	}
-	public void moveDown() {
-		y += 32;
-
-	}
-
-	public void moveUp() {
-		y -= 32;
-
-	}
-
-	public void moveRight() {
-		x += 32;
-
-	}
-
-	public void moveLeft() {
-		x -= 32;
-	}
-
+	
 	public int getX() {
 		return x;
 	}
@@ -74,17 +53,8 @@ public class Player {
 		this.y = y;
 	}
 
-	public float getSpeed() {
-		return speed;
-	}
+	
 
-	public void setSpeed(float speed) {
-		this.speed = speed;
-	}
 
-	public Position getPosition() {
-		return new Position(x, y);
-
-	}
 
 }

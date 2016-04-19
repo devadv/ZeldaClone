@@ -21,20 +21,20 @@ public class Game extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 	tilemap = new TiledMap("res/testmap.tmx");
-	player = new Player();
-	player.init(gc, sbg);
+	
+	
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		tilemap.render(0, 0);
-		player.render(gc, sbg, g);
+		
 
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		player.update(gc, sbg, delta); 
+		
 		
 
 	}
