@@ -18,8 +18,7 @@ public class GameState extends StateBasedGame {
 	
 	@Override
 	public void initStatesList(GameContainer arg0) throws SlickException {
-		addState(new Menu(0));
-		addState(new Game(1));
+		addState(new MapTester(0));
 		enterState(0);
 		
 	}
@@ -30,8 +29,8 @@ public class GameState extends StateBasedGame {
 		
 		try {
 			AppGameContainer agc = new AppGameContainer(new
-			GameState("Breakout"));
-			agc.setDisplayMode(906,722,false);
+			GameState("MapTester"));
+			agc.setDisplayMode(1024,640,false);
 			agc.setShowFPS(false);
 			agc.start();
 			} catch(SlickException e) {

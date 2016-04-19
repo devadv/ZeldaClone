@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32">
+  <image source="sheet1.png" width="256" height="256"/>
+  <tile id="24">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="65" name="spritesheet_full" tilewidth="32" tileheight="32">
+  <image source="tilesets/spritesheet_full.png" width="512" height="512"/>
+  <tile id="146">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="147">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="162">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="163">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="178">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="tilelaag" width="15" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA5NkYGCQpABzk4hVKdDLTQO9KjjUoovTy82XgfgKkXqNoRjGfwzET8jU+xmIv4ygcMalV5UCveRiAFMHR3yEAwAA
+  </data>
+ </layer>
+ <objectgroup name="objectlaag" width="15" height="15">
+  <object name="start" x="32" y="416" width="32" height="32"/>
+  <object name="end" x="416" y="32" width="32" height="32"/>
+  <object name="house" x="352" y="256" width="32" height="32"/>
+ </objectgroup>
+ <layer name="foreground" width="15" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgoA1QH9VLF70DBYZiWA3WOAIAYrkjMoQDAAA=
+  </data>
+ </layer>
+</map>
