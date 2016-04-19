@@ -35,9 +35,10 @@ public class MapTester extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		generateData();
-		map.renderTileMap();
-		// map.renderTileMapLayer(1);
+		map.renderTileMapLayer(0);//background layer
 		player.render(gc, sbg, g);
+		map.renderTileMapLayer(1);//foreground layer
+		
 		// loop through data
 		int y = 0;
 		int x = 492;
