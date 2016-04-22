@@ -38,7 +38,7 @@ public class MapTester extends BasicGameState {
 		map.renderTileMapLayer(0);//background layer
 		player.render(gc, sbg, g);
 		map.renderTileMapLayer(1);//foreground layer
-		
+		map.setTileID(10, 10, 1, 13);
 		// loop through data
 		int y = 0;
 		int x = 492;

@@ -160,5 +160,8 @@ public class Map {
 
 		}
 	}
+	public void setTileID(int x, int y, int layerIndex, int tileid) {
+		tileMap.setTileId(x, y, layerIndex, tileid);
+	}
 
 }
