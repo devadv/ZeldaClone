@@ -129,7 +129,7 @@ public class Map {
 	 * Checks if tile property blocked is true.
 	 * 
 	 * @param x
-	 *            postion of x
+	 *            position of x
 	 * @param y
 	 *            position of y
 	 * @param layerIndex

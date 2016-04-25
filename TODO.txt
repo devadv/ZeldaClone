@@ -5,7 +5,7 @@ Basic screen view is 960 x 640 divide by 32 = 30 tiles x 20 tiles.
 In testfase different map, later we make one map = 9 basis screen views = 960 * 3 = 2880 = 90 tiles X 640 * 3 =  1920 = 60 tiles
 *--------------------------------------------------------------------------*
 
-1. Create a test map of 960 x 640 with diffent layers and one object layer with different objects * done
+1. Create a test map of 960 x 640 with different layers and one object layer with different objects * done
 2. implement this map in a new TestTileMap2 
 3. test if there is an collision with some tiles
 4. test and experiment with properties on tiles and examine if it is possible to use this. So is there a method in TiledMap that can
