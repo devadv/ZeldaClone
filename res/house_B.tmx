@@ -6,6 +6,9 @@
  <tileset firstgid="225" name="Bricks" tilewidth="32" tileheight="32">
   <image source="tilesets/Bricks.png" width="64" height="64"/>
  </tileset>
+ <tileset firstgid="229" name="Small Tables Sprites" tilewidth="32" tileheight="32">
+  <image source="tilesets/Small Tables Sprites.png" width="291" height="256"/>
+ </tileset>
  <layer name="foreground" width="20" height="15">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA9vDwMCwZxSP4lE8iocABgB9Rv0HsAQAAA==
@@ -13,12 +16,7 @@
  </layer>
  <layer name="background" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA9XMsQ2CUBSF4VugCUgJJoILKEwgG0AJugDgAiATv0H4G5NXkJBrbuNJvu7kdyLijIWIcEIsugU44Oj1LsiQ46rsJUhx9no33FGgVPb8fXtW83stOsNej8GwN2E27P2yJ15GvQdGvFEZ9Gp8sKAx6G3tX3p7NP8VdLAnLLAEAAA=
-  </data>
- </layer>
- <layer name="lamp" width="20" height="15">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGJygZqAdMApGwSgYdAAAE5+w1rAEAAA=
+   H4sIAAAAAAAAA3vCwMDwhMqYWoBY854C8TMqmhcJxeggGIhDyDAPF0gG4hQqmlcMxCVUNA8dwMyzZ2BI8AfieCDGpi4UiMOwiHMCMRcQcwMxD5J5dkBz/IA4Dot5UUCcCsRpQByNJicJxFJALA3EMgzE+7cUiMuwiGsCsRYQawOxDgnmEQtGqnnElhfEqAUAcSnqQ7AEAAA=
   </data>
  </layer>
 </map>

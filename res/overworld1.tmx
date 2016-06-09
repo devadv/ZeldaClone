@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32">
+  <image source="sheet1.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="Tree2" tilewidth="32" tileheight="32">
+  <image source="tilesets/Tree2.png" width="352" height="720"/>
+ </tileset>
+ <tileset firstgid="307" name="lots_of_tiles" tilewidth="32" tileheight="32">
+  <image source="tilesets/lots_of_tiles.png" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="427" name="houses1" tilewidth="32" tileheight="32">
+  <image source="tilesets/houses1.png" width="447" height="539"/>
+ </tileset>
+ <layer name="foreground" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+NmYGDgHsWjeBSP4lE8ikfxKB7FVMMAjCglEGAJAAA=
+  </data>
+ </layer>
+ <layer name="background" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA83QN0/DQBiA4bMBUUUTzaKJKpqoIoBoK22lrbSV9gNJAhOItpLASoCVJvq7IKKTY90nG8InPYNPPr/nc5RSjpA+0v2pvvPb85+6L5ZSr3jDOz7wacm+G+b9CKLYx4G2362bbSuVg1zkIR8Ftqx7TOcEpzjDuUG3jEY5KlCJKjjC7gWdGOK4xJVBt4FGI5rQjBa0CrvXdBK4wS3uDLrdNHrQiz70Y0DYvafzgEc84dmgazKjnGMM45jApPBc323pTNGZxgxmMfdH3Xk6C1jEEpYD6Jrc4Qprq1jDOjYC6Jrc4SZrW9jGDnZTdC3WbWQgE1n2T1Pv+rnDPYSTngvZW4RilKDUo+vnDg9xlPRczd4a1KIO9R5d0zvU/81t2tjbjg50osujazr6v7nNIJ0QhjCMkQC6fibd3XT4AiOdI5pgCQAA
+  </data>
+ </layer>
+</map>

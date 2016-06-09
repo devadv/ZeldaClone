@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32">
+  <image source="sheet1.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="Tree2" tilewidth="32" tileheight="32">
+  <image source="tilesets/Tree2.png" width="352" height="720"/>
+ </tileset>
+ <layer name="foreground" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+NmYGDgHsWjeBSP4lE8ikfxKB7FVMMAjCglEGAJAAA=
+  </data>
+ </layer>
+ <layer name="background" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA8VVSQ7DQAjj+cm5+U5ybn/VyQEJIbN4pmosoRGZBQxGOUXkGnb+eX0P+zywWmzDdsHQPCNU+z6GjfUadgTnUJ4W1b5CY2Sx7DmGr69bVseKN8NX7+ub3hewF+Uy01//pvVRLugcwzerq4eNge4xfKvaeR/VfEXPSDMoBspzRc/Zeyg35M/o2aPSEPJZPXf7l52/wfa327+q312+zAyh+CJzfDPdZDmt8vXxsnp3etzlG80Qq2V2fqMZir5X+NX/V/EFJ9aNmmAJAAA=
+  </data>
+ </layer>
+</map>

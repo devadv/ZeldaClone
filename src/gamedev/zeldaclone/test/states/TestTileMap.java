@@ -32,7 +32,7 @@ public class TestTileMap {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		tileMap = new TiledMap("res/testtilemap5.tmx");
+		tileMap = new TiledMap("res/house_A.tmx");
 		awtFont = new Font("RetGanon", Font.PLAIN, 20);
 		ttf = new TrueTypeFont(awtFont, false);
 		layer = "Wall";
@@ -150,20 +150,20 @@ public class TestTileMap {
 		data = new ArrayList<String>();
 		data.add("Choose D for debug mode");
 		data.add("-------------------------");
-		data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Walls")
-				+ " " + tileMap.getLayerIndex("Water"));
+		//data.add("getLayerIndex Wall / Grass: " + tileMap.getLayerIndex("Walls")
+			//	+ " " + tileMap.getLayerIndex("Water"));
 		data.add("getLayerIndex: " + layerIndex);
 		data.add("getWidth / getHeight: " + tileMap.getWidth() + " / "
 				+ tileMap.getHeight());
 		data.add("getTileWidth: " + tileMap.getTileWidth());
 		data.add("getTileHeight: " + tileMap.getTileHeight());
-		data.add("getTileId: Field 1 from Wall = "
-				+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Wall")));
+		//data.add("getTileId: Field 1 from Wall = "
+				//+ tileMap.getTileId(0, 0, tileMap.getLayerIndex("Wall")));
 		
 		data.add("PlayerX, Y: " + player.getX() + " " + player.getY());
-		data.add("PlayerTiledId "
-				+ tileMap.getTileId(player.getX() / TILESIZE, player.getY()
-						/ TILESIZE, layerIndex));
+		//data.add("PlayerTiledId "
+			//	+ tileMap.getTileId(player.getX() / TILESIZE, player.getY()
+				//		/ TILESIZE, layerIndex));
 		if (neighbourExist(0, -1)) {
 			data.add("North: " + getNextTileID(0, -1));
 		} else {

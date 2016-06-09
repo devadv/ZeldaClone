@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="house_inside" tilewidth="32" tileheight="32">
-  <image source="tilesets/house_inside.png" width="512" height="448"/>
- </tileset>
- <tileset firstgid="225" name="Bricks" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Bricks" tilewidth="32" tileheight="32">
   <image source="tilesets/Bricks.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="tilesets/house_inside.png" width="512" height="448"/>
  </tileset>
  <layer name="foreground" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA9vDwMCwZxSP4lE8iocABgB9Rv0HsAQAAA==
+   H4sIAAAAAAAAAzvAwMBwYBSP4lE8iocABgAIPuhAsAQAAA==
   </data>
  </layer>
  <layer name="background" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA9XMsQ2CUBSF4VugCUgJJoILKEwgG0AJugDgAiATv0H4G5NXkJBrbuNJvu7kdyLijIWIcEIsugU44Oj1LsiQ46rsJUhx9no33FGgVPb8fXtW83stOsNej8GwN2E27P2yJ15GvQdGvFEZ9Gp8sKAx6G3tX3p7NP8VdLAnLLAEAAA=
+   H4sIAAAAAAAAA2NhYGBgoTKGgXAgjkDiOwCxIxA7AbEzELswYAIOIOYEYi4s5qUDcQYSPwCIA4E4CIiDgTgEi3kSQCwJxFJYzCsH4gokfgIQJwJxEhAnA3EKFvOQAbp5lIJR86hrXiQQR1HJvDggzgTiLCCOp4J5IFAJxFVku27oxAex5QUxagEsmc4psAQAAA==
   </data>
  </layer>
  <layer name="lamp" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGJygZqAdMApGwSgYdAAAE5+w1rAEAAA=
+   H4sIAAAAAAAAA2NgGJygYaAdMApGwSgYdAAAxyEi77AEAAA=
   </data>
  </layer>
 </map>

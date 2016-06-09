@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32">
+  <image source="sheet1.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="Tree2" tilewidth="32" tileheight="32">
+  <image source="tilesets/Tree2.png" width="352" height="720"/>
+ </tileset>
+ <tileset firstgid="307" name="Grass1" tilewidth="32" tileheight="32">
+  <image source="tilesets/Grass1.png" width="652" height="425"/>
+ </tileset>
+ <tileset firstgid="567" name="Grass2" tilewidth="32" tileheight="32">
+  <image source="tilesets/Grass2.png" width="480" height="528"/>
+ </tileset>
+ <tileset firstgid="807" name="grass_random_grid" tilewidth="32" tileheight="32">
+  <image source="tilesets/grass_random_grid.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="811" name="001 - test" tilewidth="32" tileheight="32">
+  <image source="tilesets/001 - test.png" width="480" height="256"/>
+ </tileset>
+ <layer name="foreground" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+NmYGDgHsWjeBSP4lE8ikfxKB7FVMMAjCglEGAJAAA=
+  </data>
+ </layer>
+ <layer name="background" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA9WWYQqAIAyFhQ7T/Q9gv+tWCTEYY/PtpRI9GCJO/V6NYS2lHC1qcoyU3S/j2eIixkjsOciH9fN2PeIczdPrlsFjWuHXMnrMK/x6LD3O3vzN/+2xom/C1nNWbB3OEss5S2wfGs0TsX1oNC/ijHhX9SvE+1U9s35Rvubctye8faxflK/P1/fafVm/cgaqk9n9We5FdcK+EyL95b1xA6PiQu1gCQAA
+  </data>
+ </layer>
+</map>

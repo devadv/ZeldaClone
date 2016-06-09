@@ -18,7 +18,7 @@ public class ZeldaGame extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-	tilemap = new TiledMap("res/testmap.tmx");
+	tilemap = new TiledMap("res/house_A.tmx");
 	player = new ZeldaPlayer();
 	player.init(gc, sbg);
 	}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="walls" tilewidth="32" tileheight="32">
+  <image source="tilesets/Bricks.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="house_inside" tilewidth="32" tileheight="32">
+  <image source="tilesets/house_inside.png" width="512" height="448"/>
+ </tileset>
+ <layer name="foreground" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAAzvAwMBwYBSP4lE8iocABgAIPuhAsAQAAA==
+  </data>
+ </layer>
+ <layer name="background" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NhYGBgoTImBMKBOAJNjB+IBdDEiDUvHYgz0MTkgViBTPPKgbgCTUwfiA3INI9YgM28GCqaZwHEllQ0zwOIPYnUGwnEUQTMA4FYIsyKA+JMIM4C4ngC5hELKoG4igj3UQJGqnnElhfEqAUAGUlsX7AEAAA=
+  </data>
+ </layer>
+</map>
