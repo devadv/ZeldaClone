@@ -157,13 +157,13 @@
   <image source="tilesets/Bricks.png" width="64" height="64"/>
   <tile id="3">
    <properties>
-    <property name="blocked" value=""/>
+    <property name="blocked" value="true"/>
    </properties>
   </tile>
  </tileset>
  <layer name="background" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA9vDwMCwZxSP4lE8iocABgB9Rv0HsAQAAA==
+   H4sIAAAAAAAAA3vCwMDwhMp4D5XwqHmj5o2aN/TNI7a8IEYtAEvOWxewBAAA
   </data>
  </layer>
  <layer name="foreground" width="20" height="15">

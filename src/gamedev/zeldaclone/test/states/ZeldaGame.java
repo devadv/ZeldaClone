@@ -25,14 +25,14 @@ public class ZeldaGame extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-	tileMap = new TiledMap("res/house_A.tmx");
-	player = new ZeldaPlayer();
-	player.init(gc, sbg);
-	Position position = getStartPos();
-	player.setX(position.getX());
-	player.setY(position.getY());
-	layer = "";
-	layerIndex = tileMap.getLayerIndex(layer);
+		tileMap = new TiledMap("res/house_A.tmx");
+		player = new ZeldaPlayer();
+		player.init(gc, sbg);
+		Position position = getStartPos();
+		player.setX(position.getX());
+		player.setY(position.getY());
+		layer = "foreground";
+		layerIndex = tileMap.getLayerIndex(layer);
 	}
 
 	@Override
@@ -46,79 +46,81 @@ public class ZeldaGame extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
-			if (neighbourExist(-1, 0)) {
-				if (!(getNextTileID(-1, 0) == 26)) {
-					player.moveLeft();
-				}
+			if (!isBlocked(-1, 0)) {
+
+				player.moveLeft();
+
 			}
 		}
 
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
 
-			if (neighbourExist(1, 0)) {
-				if (!(getNextTileID(1, 0) == 26)) {
-					player.moveRight();
-				}
+			if (!isBlocked(1, 0)) {
+
+				player.moveRight();
+
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
-			if (neighbourExist(0, -1)) {
-				if(!(getNextTileID(0, -1) == 26)) {
-					player.moveUp();
-				}
+			
+			if (!isBlocked(0, -1)) {
+
+				player.moveUp();
+
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
-			if (neighbourExist(0, 1)) {
-				if (!(getNextTileID(0, 1) == 26)) {
-				 // layer = "Treasure";
-					if(!(getNextTileID(0, 1) == 465)) {
-						
-					player.moveDown();
-					}
-				}
+			
+			if (!isBlocked(0, 1)) {
+
+				player.moveDown();
+
 			}
 		}
 
 	}
-	
-	public Position getStartPos(){
+
+	public Position getStartPos() {
 		int startPosX = 0;
 		int startPosY = 0;
 		int groupID = 0;
 		String objectName1 = tileMap.getObjectName(groupID, 0);
-		if (objectName1.equals("start")){
+		if (objectName1.equals("start")) {
 			startPosX = tileMap.getObjectX(groupID, 0);
 			startPosY = tileMap.getObjectY(groupID, 0);
-		}else {
+		} else {
 			System.out.println("start object has to be the first one");
 		}
-			
-		return new Position(startPosX,startPosY);
+
+		return new Position(startPosX, startPosY);
 	}
+
 	public Position getEndPos() {
-		
+
 		int endPosX = 0;
 		int endPosY = 0;
 		int groupID = 0;
 		String objectName1 = tileMap.getObjectName(groupID, 1);
-		if (objectName1.equals("end")){
+		if (objectName1.equals("end")) {
 			endPosX = tileMap.getObjectX(groupID, 1);
 			endPosY = tileMap.getObjectY(groupID, 1);
-	}
-		else {
+		} else {
 			System.out.println("end object has to be the second one");
 		}
-		return new Position(endPosX,endPosY);
+		return new Position(endPosX, endPosY);
 
 	}
-	
+
 	/**
 	 * Checks if it's the end of the map.
-	 * @param coordinateX The X coordinates of the direction the player moves.
-	 * @param coordinateY The Y coordinates of the direction the player moves.
+	 * 
+	 * @param coordinateX
+	 *            The X coordinates of the direction the player moves.
+	 * @param coordinateY
+	 *            The Y coordinates of the direction the player moves.
 	 * @return true if tile exists. And false if it doesn't exist.
-	 * <pre>
+	 * 
+	 *         <pre>
 	 * Coordinates example.
 	 * 		North (0, -1), 
 	 * 		East (1, 0),
@@ -130,9 +132,8 @@ public class ZeldaGame extends BasicGameState {
 
 		try {
 
-			int valueID = tileMap.getTileId((player.getX() / TILESIZE)
-					+ coordinateX, player.getY() / TILESIZE + coordinateY,
-					layerIndex);
+			int valueID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
+					/ TILESIZE + coordinateY, layerIndex);
 
 		} catch (ArrayIndexOutOfBoundsException e) {
 
@@ -141,26 +142,28 @@ public class ZeldaGame extends BasicGameState {
 		return true;
 
 	}
+
 	/**
 	 * 
-	 * @param coordinateX The X coordinates of the direction the player moves.
-	 * @param coordinateY The Y coordinates of the direction the player moves.
+	 * @param coordinateX
+	 *            The X coordinates of the direction the player moves.
+	 * @param coordinateY
+	 *            The Y coordinates of the direction the player moves.
 	 * @return true if tile exists. And false if it doesn't exist.
 	 */
 
 	public int getNextTileID(int coordinateX, int coordinateY) {
 		int tileID;
 		try {
-			tileID = tileMap.getTileId(
-					(player.getX() / TILESIZE) + coordinateX, player.getY()
-							/ TILESIZE + coordinateY, layerIndex);
+			tileID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
+					/ TILESIZE + coordinateY, layerIndex);
 		} catch (ArrayIndexOutOfBoundsException e) {
 
 			return 0;
 		}
 		return tileID;
 	}
-	
+
 	public boolean isBlocked(int coordinateX, int coordinateY) {
 		int tileID = getNextTileID(coordinateX, coordinateY);
 		String value = tileMap.getTileProperty(tileID, "blocked", "false");
@@ -173,7 +176,7 @@ public class ZeldaGame extends BasicGameState {
 
 	@Override
 	public int getID() {
-		// TODO 
+		// TODO
 		return 1;
 	}
 
