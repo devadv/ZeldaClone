@@ -18,6 +18,8 @@ public class ZeldaGame extends BasicGameState {
 	private int TILESIZE = 32;
 	private int layerIndex;
 	private String layer;
+	private int offsetX = 5 * TILESIZE;
+	private int offsetY = 3 * TILESIZE;
 
 	public ZeldaGame(int i) {
 
@@ -29,8 +31,8 @@ public class ZeldaGame extends BasicGameState {
 		player = new ZeldaPlayer();
 		player.init(gc, sbg);
 		Position position = getStartPos();
-		player.setX(position.getX());
-		player.setY(position.getY());
+		player.setX(position.getX() + offsetX);
+		player.setY(position.getY() + offsetY);
 		layer = "foreground";
 		layerIndex = tileMap.getLayerIndex(layer);
 	}
@@ -38,7 +40,7 @@ public class ZeldaGame extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setBackground(Color.black);
-		tileMap.render(0, 0);
+		tileMap.render(offsetX, offsetY);
 		player.render(gc, sbg, g);
 
 	}
@@ -62,7 +64,7 @@ public class ZeldaGame extends BasicGameState {
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
-			
+
 			if (!isBlocked(0, -1)) {
 
 				player.moveUp();
@@ -70,7 +72,7 @@ public class ZeldaGame extends BasicGameState {
 			}
 		}
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
-			
+
 			if (!isBlocked(0, 1)) {
 
 				player.moveDown();
@@ -132,8 +134,8 @@ public class ZeldaGame extends BasicGameState {
 
 		try {
 
-			int valueID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
-					/ TILESIZE + coordinateY, layerIndex);
+			int valueID = tileMap.getTileId((player.getX() - offsetX / TILESIZE) + coordinateX,
+					player.getY() - offsetY / TILESIZE + coordinateY, layerIndex);
 
 		} catch (ArrayIndexOutOfBoundsException e) {
 
@@ -154,9 +156,10 @@ public class ZeldaGame extends BasicGameState {
 
 	public int getNextTileID(int coordinateX, int coordinateY) {
 		int tileID;
+
 		try {
-			tileID = tileMap.getTileId((player.getX() / TILESIZE) + coordinateX, player.getY()
-					/ TILESIZE + coordinateY, layerIndex);
+			tileID = tileMap.getTileId((player.getX() - offsetX) / TILESIZE + coordinateX,
+					(player.getY() - offsetY) / TILESIZE + coordinateY, layerIndex);
 		} catch (ArrayIndexOutOfBoundsException e) {
 
 			return 0;
@@ -166,6 +169,7 @@ public class ZeldaGame extends BasicGameState {
 
 	public boolean isBlocked(int coordinateX, int coordinateY) {
 		int tileID = getNextTileID(coordinateX, coordinateY);
+		// System.out.println("X : " + coordinateX + " Y : " + coordinateY);
 		String value = tileMap.getTileProperty(tileID, "blocked", "false");
 		if (value.equals("true")) {
 			return true;
