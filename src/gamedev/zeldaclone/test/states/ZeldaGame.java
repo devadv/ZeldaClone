@@ -47,6 +47,7 @@ public class ZeldaGame extends BasicGameState {
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
 			if (!isBlocked(-1, 0)) {
 
