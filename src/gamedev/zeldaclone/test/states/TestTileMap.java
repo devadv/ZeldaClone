@@ -199,7 +199,11 @@ public class TestTileMap {
 			);
 		}
 		
-		data.add("objectID for bed " + getObjectID("bed"));
+		data.add("objectID for table " + getObjectID("table"));
+		if(player.getBounds(getRectangleObject(getObjectID("table")))){
+			data.add("collision with table");
+		}
+		data.add("objectID for bed" + getObjectID("bed"));
 		if(player.getBounds(getRectangleObject(getObjectID("bed")))){
 			data.add("collision with bed");
 		}
@@ -331,11 +335,14 @@ public class TestTileMap {
 			String objName = tileMap.getObjectName(groupID, i);
 			if (objName.equals(name)) {
 				objID = i;
+				return objID;
 			} else {
 				objID = -1;
+				return objID;
 			}
 		}
 		return objID;
+		
 		
 	}
 	
