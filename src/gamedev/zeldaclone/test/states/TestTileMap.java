@@ -97,9 +97,12 @@ public class TestTileMap {
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
 			if (neighbourExist(-1, 0)) {
 				if (!(getNextTileID(-1, 0) == 26)) {
-									
-					player.moveLeft();
 					
+					player.moveLeft();
+					if (collisionPlayerObjects()){
+						player.moveRight();
+					}
+
 				}
 			}
 		}
@@ -109,6 +112,9 @@ public class TestTileMap {
 			if (neighbourExist(1, 0)) {
 				if (!(getNextTileID(1, 0) == 26)) {
 					player.moveRight();
+					if (collisionPlayerObjects()){
+						player.moveLeft();
+					}
 				}
 			}
 		}
@@ -116,6 +122,9 @@ public class TestTileMap {
 			if (neighbourExist(0, -1)) {
 				if (!(getNextTileID(0, -1) == 26)) {
 					player.moveUp();
+					if (collisionPlayerObjects()){
+						player.moveDown();
+					}
 				}
 			}
 		}
@@ -124,8 +133,10 @@ public class TestTileMap {
 				if (!(getNextTileID(0, 1) == 26)) {
 					// layer = "Treasure";
 					if (!(getNextTileID(0, 1) == 465)) {
-
 						player.moveDown();
+						if (collisionPlayerObjects()){
+							player.moveUp();
+						}
 					}
 				}
 			}
@@ -136,11 +147,11 @@ public class TestTileMap {
 			Position position = getStartPos();
 			player.setX(position.getX());
 			player.setY(position.getY());
-			//System.out.println("End.");
+			// System.out.println("End.");
 		}
 		if (player.getPosition().getX() == getStartPos().getX()
 				&& player.getPosition().getY() == getStartPos().getY()) {
-			//System.out.println("Start.");
+			// System.out.println("Start.");
 		}
 	}
 
@@ -185,29 +196,27 @@ public class TestTileMap {
 		} else {
 			data.add("West:  Doesn't exist");
 		}
-		data.add("");
-		data.add("");
-		data.add("");
-		int objectCount = tileMap.getObjectCount(0);
-		data.add("objectCount: " + objectCount);
-		for (int i = 0; i < objectCount; i++) {
-			data.add("* object: " + tileMap.getObjectName(0, i));
-			data.add("Rect :" + tileMap.getObjectName(0, i)
-			+ " Center : " 
-			+ getRectangleObject(i).getCenterX()+ "," 
-			+ getRectangleObject(i).getCenterY() 
-			);
-		}
-		
-		data.add("objectID for table " + getObjectID("table"));
-		if(player.getBounds(getRectangleObject(getObjectID("table")))){
+		data.add("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
+		data.add("objectID for table: " + getObjectID("table"));
+		if (player.getBounds(getRectangleObject(getObjectID("table")))) {
 			data.add("collision with table");
 		}
-		data.add("objectID for bed" + getObjectID("bed"));
-		if(player.getBounds(getRectangleObject(getObjectID("bed")))){
-			data.add("collision with bed");
+		data.add("objectID for bed: " + getObjectID("bed"));
+		if (player.getBounds(getRectangleObject(getObjectID("bed")))) {
+			data.add("collision with bed ");
 		}
-		
+		data.add("objectID for closet: " + getObjectID("closet"));
+		if (player.getBounds(getRectangleObject(getObjectID("closet")))) {
+			data.add("collision with closet");
+		}
+		for (Rectangle rect : getObjects()) {
+			data.add("" + rect.toString());
+		}
+
+		if (collisionPlayerObjects()) {
+			data.add("Collision");
+		}
 
 	}
 
@@ -316,12 +325,12 @@ public class TestTileMap {
 	}
 
 	public Rectangle getRectangleObject(int objID) {
-		int groupID = 0; 
+		int groupID = 0;
 		int x = tileMap.getObjectX(groupID, objID);
-		int y = tileMap.getObjectY(groupID, objID); 
+		int y = tileMap.getObjectY(groupID, objID);
 		int width = tileMap.getObjectWidth(groupID, objID);
 		int height = tileMap.getObjectHeight(groupID, objID);
-		
+
 		return new Rectangle(x, y, width, height);
 
 	}
@@ -335,15 +344,40 @@ public class TestTileMap {
 			String objName = tileMap.getObjectName(groupID, i);
 			if (objName.equals(name)) {
 				objID = i;
-				return objID;
-			} else {
-				objID = -1;
-				return objID;
+
 			}
 		}
 		return objID;
-		
-		
+
 	}
-	
+
+	public ArrayList<Rectangle> getObjects() {
+		ArrayList<Rectangle> listObj = new ArrayList<Rectangle>();
+		int objectCount = tileMap.getObjectCount(0);
+		int groupID = 0;
+		int objID = 0;
+		for (int i = 0; i < objectCount; i++) {
+			String objName = tileMap.getObjectName(groupID, i);
+
+			if (!(objName.equals("start")) && !(objName.equals("end"))){
+
+				listObj.add(getRectangleObject(getObjectID(objName)));
+			}
+
+		}
+		return listObj;
+	}
+
+	public boolean collisionPlayerObjects() {
+
+		for (Rectangle r : getObjects()) {
+			if (player.getBounds(r)) {
+				return true;
+			}
+		}
+
+		return false;
+
+	}
+
 }
